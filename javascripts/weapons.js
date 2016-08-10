@@ -1,12 +1,14 @@
-var Weapon = function() {
-  this.name = "bare hands";
-  this.damage = 1;
-  this.hands = 2;
+var Gauntlet = (function(gauntlet){
 
-  this.toString = function() {
+  var Weapon = function() {
+    this.name = "bare hands";
+    this.damage = 1;
+    this.hands = 2;
+
+    this.toString = function() {
     return this.name;
-  }
-};
+    }
+  };
 
 var BrassKnuckles = function() {
   this.name = "brass knuckles";
@@ -43,12 +45,7 @@ var BroadSword = function() {
 };
 BroadSword.prototype = new Weapon();
 
-var WarAxe = function() {
-  this.name = "war axe";
-  this.damage = 18;
-  this.hands = 2;
-};
-WarAxe.prototype = new Weapon();
+
 
 var WarHammer = function() {
   this.name = "war hammer";
@@ -82,5 +79,6 @@ var Staff = function() {
   this.hands = 2
 }
 
-
+return gauntlet
+})(Gauntlet || {})
 
