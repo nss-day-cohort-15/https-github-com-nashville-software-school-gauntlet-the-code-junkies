@@ -42,6 +42,8 @@ $(document).ready(function() {
     switch (nextCard) {
       case "card--species":
         moveAlong = ($("#player-name").val() !== "");
+        // thing.choice = selectedSpecies
+        //event.currentTarget.id
         break;
       case "card--class":
         moveAlong = ($("#player-name").val() !== "");
