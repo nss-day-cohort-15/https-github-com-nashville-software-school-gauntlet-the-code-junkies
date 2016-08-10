@@ -11,22 +11,61 @@
 
 
 $(document).ready(function() {
-  var user = new Gauntlet.Combatants.Player() //Get name dynamically from DOM
-  var chosenSpecies = new Gauntlet.Species.Human()
-  var chosenClass = new Gauntlet.GuildHall.Ninja()
-  var chosenWeapon = new Gauntlet.Armory.BrassKnuckles()
-  user.species = chosenSpecies
-  user.class = chosenClass
-  user.weapon = chosenWeapon
-  chosenSpecies.health += chosenClass.healthBonus
-  chosenSpecies.strength += chosenClass.strengthBonus
-  chosenSpecies.intelligence += chosenClass.intelligenceBonus
+  var _speciesName;
+  var _className;
+  var _weaponName;
 
-  console.log("species intelligence", chosenSpecies.intelligence)
-  console.log("chosen Species", chosenSpecies)
-  console.log("chosen class", chosenClass)
-  console.log("chosen weapon", chosenWeapon)
-  console.log("User so far", user)
+  $(".name").on("click", getPlayerName)
+  $(".species__link").on("click", getSpeciesName)
+  $(".class__link").on("click", getClassName)
+  $(".weapon__link").on("click", getWeaponName)
+  $(".battle").on("click", createPlayer)
+
+  function getPlayerName (e){
+    var playerName = $("#player-name").val()
+    console.log("player name ", playerName)
+    return playerName
+  }
+
+  function getSpeciesName (e){
+    _speciesName = e.currentTarget.id
+    console.log("species Name", _speciesName)
+    // setSpeciesName(speciesName)
+  }
+
+  function getClassName (e) {
+    _className = e.currentTarget.id
+    console.log("class Name", _className)
+    // setClassName(className)
+  }
+
+  function getWeaponName (e) {
+    _weaponName = e.currentTarget.id
+    console.log("weapon Name", _weaponName)
+    // setWeaponName(weaponName)
+  }
+
+  function createPlayer (){
+    var user = new Gauntlet.Combatants.Player(getPlayerName()) //Get name dynamically from DOM
+    var chosenSpecies = new Gauntlet.Species[_speciesName]()
+    var chosenClass = new Gauntlet.GuildHall[_className]()
+    var chosenWeapon = new Gauntlet.Armory[_weaponName]()
+    user.species = chosenSpecies
+    user.class = chosenClass
+    user.weapon = chosenWeapon
+    chosenSpecies.health += chosenClass.healthBonus
+    chosenSpecies.strength += chosenClass.strengthBonus
+    chosenSpecies.intelligence += chosenClass.intelligenceBonus
+    // console.log("species name ", _speciesName)
+    // console.log("class name ", _className)
+    // console.log("weapon name ", _weaponName)
+    // console.log("species intelligence", chosenSpecies.intelligence)
+    // console.log("chosen Species", chosenSpecies)
+    // console.log("chosen class", chosenClass)
+    // console.log("chosen weapon", chosenWeapon)
+    console.log("User so far", user)
+  }
+
   /*
     Show the initial view that accepts player name
    */
