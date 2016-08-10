@@ -11,12 +11,9 @@ var Gauntlet = (function(gauntlet) {
     this.weapon = null;
 
     this.playerName = name || "unknown adventurer";
-    this.health = Math.floor(Math.random() * 40 + 50);
-    // this.limbs = ["head", "neck", "arm", "leg", "torso"];
-    this.skinColor = "tan";
-    this.skinColors = [this.skinColor];
-    this.strength = 90;
-    this.intelligence = 90;
+    this.health = null;
+    this.strength = null;
+    this.intelligence = null;
 
     this.toString = function() {
       var output = [this.playerName,
@@ -37,7 +34,6 @@ var Gauntlet = (function(gauntlet) {
     };
   };
 
-  
 
   // var warrior = new Gauntlet.Species.Human();
   // warrior.setWeapon(new WarAxe());
