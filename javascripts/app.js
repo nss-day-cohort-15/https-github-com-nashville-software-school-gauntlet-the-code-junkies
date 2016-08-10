@@ -12,18 +12,17 @@
 
 $(document).ready(function() {
   var user = new Gauntlet.Combatants.Player() //Get name dynamically from DOM
-  var chosenSpecies = new Gauntlet.Species.Elf()
-  var chosenClass = new Gauntlet.GuildHall.Warrior()
+  var chosenSpecies = new Gauntlet.Species.Human()
+  var chosenClass = new Gauntlet.GuildHall.Ninja()
   var chosenWeapon = new Gauntlet.Armory.BrassKnuckles()
   user.species = chosenSpecies
   user.class = chosenClass
   user.weapon = chosenWeapon
-    // user.health += chosenClass.healthBonus
-    // user.strength += chosenSpecies.strengthBonus + chosenClass.healthBonus
-    // user.intelligence += chosenSpecies.intelligenceBonus + chosenClass.intelligenceBonus
+  chosenSpecies.health += chosenClass.healthBonus
+  chosenSpecies.strength += chosenClass.strengthBonus
+  chosenSpecies.intelligence += chosenClass.intelligenceBonus
 
-  // var chosenSpecies = new Gauntlet.Species.Human()
-  // var chosenSpecies = new Gauntlet.Species.Orc()
+  console.log("species intelligence", chosenSpecies.intelligence)
   console.log("chosen Species", chosenSpecies)
   console.log("chosen class", chosenClass)
   console.log("chosen weapon", chosenWeapon)

@@ -13,7 +13,7 @@ var Gauntlet = (function(gauntlet){
   }
 
   gauntlet.Species.Human = function() {
-    this.species = "Human";
+    this.speciesName = "Human";
     this.health += 20;
 
     // this.skinColors.push("brown", "red", "white", "disease");
@@ -24,7 +24,7 @@ var Gauntlet = (function(gauntlet){
 
 
   gauntlet.Species.Elf = function() {
-    this.species = "Elf";
+    this.speciesName = "Elf";
     this.intelligence += 20;
 
     // this.skinColors.push("brown", "red", "white", "disease");
@@ -35,7 +35,7 @@ var Gauntlet = (function(gauntlet){
   gauntlet.Species.Elf.prototype = new gauntlet.Species.Specie();
 
   gauntlet.Species.Orc = function() {
-    this.species = "Orc";
+    this.speciesName = "Orc";
     this.strength += 20;
 
     // this.skinColors.push("brown", "red", "white", "disease");
