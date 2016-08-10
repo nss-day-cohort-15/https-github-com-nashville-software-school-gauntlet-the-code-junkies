@@ -2,14 +2,29 @@
   Test code to generate a human player and an orc player
  */
 
+
 /*
   Test code to generate a spell
  */
-var spell = new Gauntlet.SpellBook.Sphere();
-console.log("spell: ", spell.toString());
+// var spell = new Gauntlet.SpellBook.Sphere();
+// console.log("spell: ", spell.toString());
 
 
 $(document).ready(function() {
+  var user = new Gauntlet.Combatants.Player() //Get name dynamically from DOM
+    user.species = chosenSpecies
+    user.class = chosenClass
+    // user.weapon = chosenWeapon
+    // user.health += chosenClass.healthBonus
+    // user.strength += chosenSpecies.strengthBonus + chosenClass.healthBonus
+    // user.intelligence += chosenSpecies.intelligenceBonus + chosenClass.intelligenceBonus
+
+  // var chosenSpecies = new Gauntlet.Species.Human()
+  // var chosenSpecies = new Gauntlet.Species.Orc()
+  var chosenSpecies = new Gauntlet.Species.Elf()
+  var chosenClass = new Gauntlet.GuildHall.Warrior()
+  console.log("chosen Species", chosenSpecies)
+  console.log("chosen class", chosenClass)
   /*
     Show the initial view that accepts player name
    */

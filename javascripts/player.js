@@ -13,7 +13,7 @@ var Gauntlet = (function(gauntlet) {
     this.playerName = name || "unknown adventurer";
     this.health = Math.floor(Math.random() * 40 + 50);
     // this.limbs = ["head", "neck", "arm", "leg", "torso"];
-    this.skinColor = "gray";
+    this.skinColor = "tan";
     this.skinColors = [this.skinColor];
     this.strength = 90;
     this.intelligence = 90;
@@ -37,24 +37,17 @@ var Gauntlet = (function(gauntlet) {
     };
   };
 
-  var user = new gauntlet.Combatants.Player(name) //Get name dynamically from DOM
-    user.species = chosenSpecies
-    user.class = chosenClass
-    user.weapon = chosenWeapon
-    user.health += chosenSpecies.healthbonus + chosenClass.healthBonus
-    user.strength += chosenSpecies.strengthBonus + chosenClass.healthBonus
-    user.intelligence += chosenSpecies.intelligenceBonus + chosenClass.intelligenceBonus
+  
 
+  // var warrior = new Gauntlet.Species.Human();
+  // warrior.setWeapon(new WarAxe());
+  // warrior.generateClass();  // This will be used for "Surprise me" option
+  // console.log(warrior.toString());
 
-  var warrior = new Gauntlet.Combatants.Human();
-  warrior.setWeapon(new WarAxe());
-  warrior.generateClass();  // This will be used for "Surprise me" option
-  console.log(warrior.toString());
-
-  var orc = new Gauntlet.Combatants.Orc();
-  orc.generateClass();
-  orc.setWeapon(new BroadSword());
-  console.log(orc.toString());
+  // var orc = new Gauntlet.Combatants.Orc();
+  // orc.generateClass();
+  // orc.setWeapon(new BroadSword());
+  // console.log(orc.toString());
 
   gauntlet.Combatants.Player.prototype.setWeapon = function(newWeapon) {
     this.weapon = newWeapon;
@@ -75,36 +68,6 @@ var Gauntlet = (function(gauntlet) {
     return this.class;
   };
 
-  /*
-    Define the base properties for a human in a 
-    constructor function.
-   */
-  gauntlet.Combatants.Human = function() {
-    var randomSkin;
-
-    this.species = "Human";
-    this.intelligence = this.intelligence + 20;
-
-    this.skinColors.push("brown", "red", "white", "disease");
-    randomSkin = Math.round(Math.random() * (this.skinColors.length-1));
-    this.skinColor = this.skinColors[randomSkin];
-
-    this.allowedClasses = ["Warrior", "Berserker", "Valkyrie", "Monk"];
-  };
-  gauntlet.Combatants.Human.prototype = new gauntlet.Combatants.Player();
-
-
-  /*
-    Define the base properties for a monster in a 
-    constructor function.
-   */
-  gauntlet.Combatants.Monster = function() {
-    this.health = this.health - 30;
-    this.intelligence = this.intelligence -20;
-    this.strength = this.strength + 30;
-  };
-
-  gauntlet.Combatants.Monster.prototype = new gauntlet.Combatants.Player();
 
   return gauntlet
 
