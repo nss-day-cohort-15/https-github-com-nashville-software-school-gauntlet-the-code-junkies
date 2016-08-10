@@ -25,9 +25,39 @@ Gauntlet.SpellBook.Spell = function() {
  */
 Gauntlet.SpellBook.Sphere = function() {
   this.name = "sphere";
+  this.type = "mysticism";
   this.damage = Math.floor(Math.random() * 10 + 10);
-
-  var random = Math.round(Math.random() * (this.damageTypes.length - 1));
-  this.type = this.damageTypes[random];
 };
 Gauntlet.SpellBook.Sphere.prototype = new Gauntlet.SpellBook.Spell();
+
+
+Gauntlet.SpellBook.FireBall = function() {
+  this.name = "fire ball";
+  this.type = "fire";
+  this.damage = Math.floor(Math.random() * 20 + 5);
+};
+Gauntlet.SpellBook.FireBall.prototype = new Gauntlet.SpellBook.Spell();
+
+
+Gauntlet.SpellBook.LightningBolt = function() {
+  this.name = "lightning bolt";
+  this.type = "lightning";
+  this.damage = Math.floor(Math.random() * 10 + 15);
+};
+Gauntlet.SpellBook.LightningBolt.prototype = new Gauntlet.SpellBook.Spell();
+
+
+Gauntlet.SpellBook.Freeze = function() {
+  this.name = "freeze";
+  this.type = "water";
+  this.damage = 20;
+};
+Gauntlet.SpellBook.Freeze.prototype = new Gauntlet.SpellBook.Spell();
+
+
+Gauntlet.SpellBook.BoulderToss = function() {
+  this.name = "boulder toss";
+  this.type = "earth";
+  this.damage = Math.floor(Math.random() * 20 + 20);
+};
+Gauntlet.SpellBook.BoulderToss.prototype = new Gauntlet.SpellBook.Spell();
