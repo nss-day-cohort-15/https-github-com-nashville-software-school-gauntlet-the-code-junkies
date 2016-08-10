@@ -12,7 +12,7 @@ var Gauntlet = (function(gauntlet) {
 
     this.playerName = name || "unknown adventurer";
     this.health = Math.floor(Math.random() * 40 + 50);
-    this.limbs = ["head", "neck", "arm", "leg", "torso"];
+    // this.limbs = ["head", "neck", "arm", "leg", "torso"];
     this.skinColor = "gray";
     this.skinColors = [this.skinColor];
     this.strength = 90;
@@ -36,6 +36,25 @@ var Gauntlet = (function(gauntlet) {
       return output;
     };
   };
+
+  var user = new gauntlet.Combatants.Player(name) //Get name dynamically from DOM
+    user.species = chosenSpecies
+    user.class = chosenClass
+    user.weapon = chosenWeapon
+    user.health += chosenSpecies.healthbonus + chosenClass.healthBonus
+    user.strength += chosenSpecies.strengthBonus + chosenClass.healthBonus
+    user.intelligence += chosenSpecies.intelligenceBonus + chosenClass.intelligenceBonus
+
+
+  var warrior = new Gauntlet.Combatants.Human();
+  warrior.setWeapon(new WarAxe());
+  warrior.generateClass();  // This will be used for "Surprise me" option
+  console.log(warrior.toString());
+
+  var orc = new Gauntlet.Combatants.Orc();
+  orc.generateClass();
+  orc.setWeapon(new BroadSword());
+  console.log(orc.toString());
 
   gauntlet.Combatants.Player.prototype.setWeapon = function(newWeapon) {
     this.weapon = newWeapon;
