@@ -20,10 +20,14 @@ $(document).ready(function() {
     move on to the next view.
    */
   $(".card__link").click(function(e) {
+    console.log("clicked", this)
     var nextCard = $(this).attr("next");
     var moveAlong = false;
 
     switch (nextCard) {
+      case "card--species":
+        moveAlong = ($("#player-name").val() !== "");
+        break;
       case "card--class":
         moveAlong = ($("#player-name").val() !== "");
         break;
