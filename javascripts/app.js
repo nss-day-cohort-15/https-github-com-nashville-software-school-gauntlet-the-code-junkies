@@ -123,6 +123,7 @@ $(document).ready(function() {
     var BoulderToss = new Gauntlet.SpellBook.BoulderToss;
 
 
+
     user.castSpell(enemy);
     updateStats()
     enemy.attack(user)

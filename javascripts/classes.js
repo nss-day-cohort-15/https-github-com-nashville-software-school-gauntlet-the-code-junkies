@@ -73,6 +73,7 @@ var Gauntlet = (function(gauntlet) {
      */
     gauntlet.GuildHall.Mage = function() {
       this.magical = true;
+      this.chosenSpell = null;
       this.healthBonus += - 10;
       this.intelligenceBonus += 2;
     };
