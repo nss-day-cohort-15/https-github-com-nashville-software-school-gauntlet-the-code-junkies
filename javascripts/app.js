@@ -56,13 +56,6 @@ $(document).ready(function() {
     console.log("user info", user.toString())
     $("#battlePlayerName").append(`<p> ${user.toString()} </p>`)
     printStats(user, "user")
-    // console.log("species name ", _speciesName)
-    // console.log("class name ", _className)
-    // console.log("weapon name ", _weaponName)
-    // console.log("species intelligence", chosenSpecies.intelligence)
-    // console.log("chosen Species", chosenSpecies)
-    // console.log("chosen class", chosenClass)
-    // console.log("chosen weapon", chosenWeapon)
     console.log("User so far", user)
     return user
     }
@@ -111,21 +104,23 @@ $(document).ready(function() {
     return enemy
   }
 
-  // $("#enemyAttack").on("click", attackTheUser)
-  $("#userAttack").on("click", battleFieldAttack)
+  $("#enemyAttack").on("click", attackTheUser)
+  $("#userAttack").on("click", attackTheEnemy)
+  $("#magicAttack").on("click", userCastSpell)
 
   function attackTheUser () {
     enemy.attack(user);
+    console.log("Your health", user.species.health)
   }
 
   function attackTheEnemy () {
     user.attack(enemy);
+    console.log("Enemy Health", enemy.species.health)
   }
 
-  function battleFieldAttack () {
-    user.attack(enemy)
-    enemy.attack(user)
-    updateStats()
+  function userCastSpell () {
+    user.castSpell(enemy);
+    console.log("Enemy Health", enemy.species.health)
   }
 
   function enemyName (enemy){
