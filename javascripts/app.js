@@ -71,28 +71,24 @@ $(document).ready(function() {
   function getEnemyName () {
     var enemyNamesOptions = ["Some guy off the street", "The town Drunk", "Insane Asylum escapee", "Yo Momma", "Grant", "Delaine", "Casey", "Sscotth"];
     var enemyName = enemyNamesOptions[Math.round(Math.random() * (enemyNamesOptions.length - 1))];
-    console.log("enemyName", enemyName);
     return enemyName
   }
 
   function getEnemySpecies() {
     var enemySpeciesOptions = ["Human", "Elf", "Orc"];
     var enemySpecies = enemySpeciesOptions[Math.round(Math.random() * (enemySpeciesOptions.length - 1))];
-    console.log("enemySpecies", enemySpecies);
     return enemySpecies
   }
 
   function getEnemyClass() {
     var enemyClassOptions = ["Warrior", "Valkyrie", "Berserker", "Monk", "Thief", "Ninja", "Assassin", "Archer"];
     var enemyClass = enemyClassOptions[Math.round(Math.random() * (enemyClassOptions.length - 1))];
-    console.log("enemyClass", enemyClass);
     return enemyClass
   }
 
   function getEnemyWeapon () {
     var enemyWeaponOptions = ["BrassKnuckles", "Sword", "Mace", "Dagger", "BroadSword", "WarHammer", "CrossBow", "Bow"];
     var enemyWeapon = enemyWeaponOptions[Math.round(Math.random() * (enemyWeaponOptions.length - 1))];
-    console.log("enemyWeapon", enemyWeapon);
     return enemyWeapon
   }
 //End of creating enemy functions
@@ -109,7 +105,6 @@ $(document).ready(function() {
     enemySpecies.strength += enemyClass.strengthBonus
     enemySpecies.intelligence += enemyClass.intelligenceBonus
     console.log("Random Enemy", enemy)
-    console.log("enemy damage", enemy.weapon.damage, "enemy strength", enemy.species.strength);
     return enemy
   }
 
