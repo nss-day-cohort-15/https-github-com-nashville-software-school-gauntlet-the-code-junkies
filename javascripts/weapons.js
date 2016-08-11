@@ -45,7 +45,7 @@ var Gauntlet = (function(gauntlet){
       this.damage += 11;
       this.hands = 2;
     };
-    gauntlet.Armory.BroadSword.prototype = new gauntlet.Armory.Weapon();
+    gauntlet.Armory.LongSword.prototype = new gauntlet.Armory.Weapon();
 
      gauntlet.Armory.WarAxe = function() {
       this.name = "war axe";
