@@ -12,6 +12,8 @@ $(document).ready(function() {
 
   var user;
   var enemy;
+  var userHealth;
+  var enemyHealth;
 
   $(".name").on("click", getPlayerName)
   $(".species__link").on("click", getSpeciesName)
@@ -56,8 +58,10 @@ $(document).ready(function() {
     chosenSpecies.health += chosenClass.healthBonus
     chosenSpecies.strength += chosenClass.strengthBonus
     chosenSpecies.intelligence += chosenClass.intelligenceBonus
+    userHealth = chosenSpecies.health
     console.log("user info", user.toString())
     $("#battlePlayerName").append(`<p> ${user.toString()} </p>`)
+    createProgressBar(user, "user")
     printStats(user, "user")
     console.log("User so far", user)
     return user
@@ -101,7 +105,9 @@ $(document).ready(function() {
     enemySpecies.health += enemyClass.healthBonus
     enemySpecies.strength += enemyClass.strengthBonus
     enemySpecies.intelligence += enemyClass.intelligenceBonus
+    enemyHealth = enemySpecies.health
     console.log("Random Enemy", enemy)
+    createProgressBar(enemy, "enemy")
     enemyName(enemy)
     printStats(enemy, "enemy")
     return enemy
@@ -136,6 +142,21 @@ $(document).ready(function() {
       $("#battleEnemyName").append(output);
   }
 
+  function createProgressBar (player, name) {
+    console.log("user health", userHealth)
+    console.log("enemy health", enemyHealth)
+    console.log("player health", player.species.health)
+    $(`.${name}Progress`).html("")
+    var totalHealth = `${name}Health`
+    if (name === "user"){
+      playerHealthPercentage = Math.floor(player.species.health/userHealth*100)
+    } else {
+      playerHealthPercentage = Math.floor(player.species.health/enemyHealth*100)
+    }
+    $(`.${name}Progress`).append(`<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="${player.species.health}" aria-valuemin="0" aria-valuemax="${name}Health}" style="width: ${playerHealthPercentage}%">
+      ${playerHealthPercentage}% Health
+      </div>`)
+  }
   // Print Stats to the DOM
   function printStats (player, name){
     $(`.${name}`).html("")
@@ -150,6 +171,8 @@ $(document).ready(function() {
   function updateStats (){
     printStats(user, "user")
     printStats(enemy, "enemy")
+    createProgressBar(user, "user")
+    createProgressBar(enemy, "enemy")
   }
 
   function checkHealth (){
