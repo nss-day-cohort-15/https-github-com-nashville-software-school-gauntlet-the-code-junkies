@@ -132,6 +132,7 @@ $(document).ready(function() {
     chosenSpecies.intelligence += chosenClass.intelligenceBonus
     userHealth = chosenSpecies.health
     $("#battlePlayerName").append(`<p> ${user.toString()} </p>`)
+    addPicture(chosenClass.name, "user")
     createProgressBar(user, "user")
     printStats(user, "user")
     return user
@@ -176,6 +177,7 @@ $(document).ready(function() {
     enemySpecies.strength += enemyClass.strengthBonus
     enemySpecies.intelligence += enemyClass.intelligenceBonus
     enemyHealth = enemySpecies.health
+    addPicture(enemyClass.name, "enemy")
     createProgressBar(enemy, "enemy")
     enemyName(enemy)
     printStats(enemy, "enemy")
@@ -214,6 +216,15 @@ $(document).ready(function() {
         "!</small>"
       ].join(" ");
       $("#battleEnemyName").append(output);
+  }
+
+  function addPicture (name, player){
+    var imgName = name.toLowerCase()
+    if (imgName !== "monk"){
+      $(`#${player}Image`).append(`<img src="images/${imgName}.jpg" class="classImg">`)
+    } else {
+      $(`#${player}Image`).append(`<img src="images/monk.jpeg" class="classImg">`)
+    }
   }
 
   function createProgressBar (player, name) {
