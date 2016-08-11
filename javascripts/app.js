@@ -64,6 +64,17 @@ $(document).ready(function() {
     // console.log("chosen class", chosenClass)
     // console.log("chosen weapon", chosenWeapon)
     console.log("User so far", user)
+
+    var enemy = new Gauntlet.Combatans.Player(getEnemyName())
+    var enemySpecies = new Gauntlet.Species(getEnemySpecies())
+    var enemyClass = new Gauntlet.GuildHall(getEnemyClass())
+    var enemyWeapon = new Gauntlet.Armory(getEnemyWeapon())
+    enemy.species = enemySpecies
+    enemy.class = enemyClass
+    enemy.weapon = enemyWeapon
+    enemySpecies.health += enemyClass.healthBonus
+    enemySpecies.strength += enemyClass.strengthBonus
+    enemySpecies.intelligence += enemyClass.intelligenceBonus
   }
 
   /*
