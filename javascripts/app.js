@@ -55,6 +55,7 @@ $(document).ready(function() {
     chosenSpecies.intelligence += chosenClass.intelligenceBonus
     console.log("user info", user.toString())
     $("#battlePlayerName").append(`<p> ${user.toString()} </p>`)
+    printStats(user, "user")
     // console.log("species name ", _speciesName)
     // console.log("class name ", _className)
     // console.log("weapon name ", _weaponName)
@@ -105,11 +106,13 @@ $(document).ready(function() {
     enemySpecies.strength += enemyClass.strengthBonus
     enemySpecies.intelligence += enemyClass.intelligenceBonus
     console.log("Random Enemy", enemy)
+    enemyName(enemy)
+    printStats(enemy, "enemy")
     return enemy
   }
 
-  $("#enemyAttack").on("click", attackTheUser)
-  $("#userAttack").on("click", attackTheEnemy)
+  // $("#enemyAttack").on("click", attackTheUser)
+  $("#userAttack").on("click", battleFieldAttack)
 
   function attackTheUser () {
     enemy.attack(user);
@@ -117,6 +120,32 @@ $(document).ready(function() {
 
   function attackTheEnemy () {
     user.attack(enemy);
+  }
+
+  function battleFieldAttack () {
+    user.attack(enemy)
+    enemy.attack(user)
+  }
+
+  function enemyName (enemy){
+      var output = [ "<strong>", enemy.playerName, ": </strong>",
+      "<small>", enemy.species.speciesName, enemy.class, "with",
+       enemy.species.health, "health.",
+        (enemy.class.magical) ? "Able to cast " : " Wielding a ",
+        enemy.weapon.toString(),
+        "!</small>"
+      ].join(" ");
+      $("#battleEnemyName").append(output);
+  }
+
+  // Print Stats to the DOM
+  function printStats (player, name){
+    $(`#${name}Health`).append(`<h3><strong>HEALTH:</strong> <small>${player.species.health}</small><h3>`)
+    if (user.species.isMagical) {
+      $(`#${name}Intelligence`).append(`<h3><strong>INTELLIGENCE:</strong> <small>${player.species.intelligence}<small></h3>`)
+    } else {
+      $(`#${name}Strength`).append(`<h3><strong>STRENGTH:<strong> <small>${player.species.strength}</small></h3>`)
+    }
   }
 
   /*
