@@ -352,17 +352,24 @@
             <div class="card__button">
               <a class="card__link btn btn--big btn--blue" id="userAttack">
                 <span class="btn__prompt">></span>
-                <span class="btn__text"> Attack!</span>
+                <span class="btn__text">Attack!</span>
               </a>
             </div>
-
-            <div class="card__button hide-selections" id="magicAttack">
-              <a class="card__link btn btn--big btn--blue" >
-                <span class="btn__prompt">></span>
-                <span class="btn__text">Cast a Spell!</span>
-              </a>
+            <div class="hide-selections" id="magicInput">
+              <div class="card__button" id="magicAttack">
+                <a class="card__link btn btn--big btn--blue" >
+                  <span class="btn__prompt">></span>
+                  <span class="btn__text">Cast a Spell!</span>
+                </a>
+              </div>
+              <div>
+                <label>Sphere<input type="radio" name="spellSelect" value="Sphere"></label>
+                <label>Fireball<input type="radio" name="spellSelect" value="Fireball"></label>
+                <label>Lightning Bolt<input type="radio" name="spellSelect" value="LightningBolt"></label>
+                <label>Freeze<input type="radio" name="spellSelect" value="Freeze"></label>
+                <label>Boulder Toss<input type="radio" name="spellSelect" value="BoulderToss"></label>
+              </div>
             </div>
-
             <div class="col-sm-4">
               <div class="battle">
                   <h2 id="battleEnemyName"></h2>
@@ -379,7 +386,12 @@
 
     <section id="battleground" class="card card--battleground"></section>
 
-
+  </article>
+  <article class="userWins hide-selections">
+    <div class="message"></div>
+  </article>
+  <article class="enemyWins hide-selections">
+    <div class="message"></div>
   </article>
 
   <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
