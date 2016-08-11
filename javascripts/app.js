@@ -125,12 +125,12 @@ $(document).ready(function() {
   function battleFieldAttack () {
     user.attack(enemy)
     enemy.attack(user)
+    updateStats()
   }
 
   function enemyName (enemy){
       var output = [ "<strong>", enemy.playerName, ": </strong>",
-      "<small>", enemy.species.speciesName, enemy.class, "with",
-       enemy.species.health, "health.",
+      "<small>", enemy.species.speciesName, enemy.class,
         (enemy.class.magical) ? "Able to cast " : " Wielding a ",
         enemy.weapon.toString(),
         "!</small>"
@@ -140,14 +140,19 @@ $(document).ready(function() {
 
   // Print Stats to the DOM
   function printStats (player, name){
-    $(`#${name}Health`).append(`<h3><strong>HEALTH:</strong> <small>${player.species.health}</small><h3>`)
+    $(`.${name}`).html("")
+    $(`.${name}`).append(`<h3><strong>HEALTH:</strong> <small>${player.species.health}</small><h3>`)
     if (user.species.isMagical) {
-      $(`#${name}Intelligence`).append(`<h3><strong>INTELLIGENCE:</strong> <small>${player.species.intelligence}<small></h3>`)
+      $(`.${name}`).append(`<h3><strong>INTELLIGENCE:</strong> <small>${player.species.intelligence}<small></h3>`)
     } else {
-      $(`#${name}Strength`).append(`<h3><strong>STRENGTH:<strong> <small>${player.species.strength}</small></h3>`)
+      $(`.${name}`).append(`<h3><strong>STRENGTH:<strong> <small>${player.species.strength}</small></h3>`)
     }
   }
 
+  function updateStats (){
+    printStats(user, "user")
+    printStats(enemy, "enemy")
+  }
   /*
     Show the initial view that accepts player name
    */

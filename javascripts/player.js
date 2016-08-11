@@ -29,10 +29,8 @@ var Gauntlet = (function(gauntlet) {
         this.species.speciesName,
         " ",
         this.class,
-        " with ",
-        this.species.health,
-        " health. ",
-        (this.class.magical) ? "Able to cast " : " Wielding a ",
+        ".",
+        (this.class.magical) ? " Able to cast " : " Wielding a ",
         this.weapon.toString(),
         "!</small>"
       ].join("");
