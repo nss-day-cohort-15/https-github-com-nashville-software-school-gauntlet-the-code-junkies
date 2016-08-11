@@ -97,7 +97,7 @@ var Gauntlet = (function(gauntlet) {
 
     gauntlet.GuildHall.Conjurer = function() {
       this.name = "Conjurer";
-      this.intelligenceBonus = this.intelligenceBonus + 1;
+      this.intelligenceBonus = this.intelligenceBonus + 2;
     };
     gauntlet.GuildHall.Conjurer.prototype = new gauntlet.GuildHall.Mage();
 
@@ -136,7 +136,7 @@ var Gauntlet = (function(gauntlet) {
     gauntlet.GuildHall.Ninja = function() {
       this.name = "Ninja";
       this.healthBonus = this.healthBonus - 5;
-      this.strengthBonus = this.strengthBonus + 2;
+      this.strengthBonus = this.strengthBonus + 5;
     };
     gauntlet.GuildHall.Ninja.prototype = new gauntlet.GuildHall.Stealth();
 
@@ -150,8 +150,8 @@ var Gauntlet = (function(gauntlet) {
 
     gauntlet.GuildHall.Archer = function() {
       this.name = "Archer";
-      this.healthBonus = this.healthBonus - 10;
-      this.strengthBonus = this.strengthBonus + 3;
+      this.healthBonus = this.healthBonus + 30 ;
+      this.strengthBonus = this.strengthBonus - 2;
     };
     gauntlet.GuildHall.Archer.prototype = new gauntlet.GuildHall.Stealth();
 
