@@ -34,17 +34,15 @@ var Gauntlet = (function(gauntlet) {
 
 
     this.toString = function() {
-      var output = [this.playerName,
-        ": a ",
-        this.species,
+      var output = ["<strong>", this.playerName,  "</strong>",
+        ": <small>",
+        this.species.speciesName,
         " ",
         this.class,
-        " with ",
-        this.health,
-        " health. ",
-        (this.class.magical) ? "Able to cast " : " Wielding a ",
+        ".",
+        (this.class.magical) ? " Able to cast " : " Wielding a ",
         this.weapon.toString(),
-        "!"
+        "!</small>"
       ].join("");
       return output;
     };

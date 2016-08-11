@@ -43,7 +43,7 @@ $(document).ready(function() {
 
 //Creating User
   function createPlayer (){
-    user = new Gauntlet.Combatants.Player(getPlayerName())
+    user = new Gauntlet.Combatants.Player(_playerName)
     var chosenSpecies = new Gauntlet.Species[_speciesName]()
     var chosenClass = new Gauntlet.GuildHall[_className]()
     var chosenWeapon = new Gauntlet.Armory[_weaponName]()
@@ -55,6 +55,7 @@ $(document).ready(function() {
     chosenSpecies.intelligence += chosenClass.intelligenceBonus
     console.log("user info", user.toString())
     $("#battlePlayerName").append(`<p> ${user.toString()} </p>`)
+    printStats(user, "user")
     console.log("User so far", user)
     return user
     }
@@ -86,7 +87,7 @@ $(document).ready(function() {
   }
 //End of creating enemy functions
 
-    function createEnemy() {
+  function createEnemy() {
     enemy = new Gauntlet.Combatants.Player(getEnemyName())
     var enemySpecies = new Gauntlet.Species[getEnemySpecies()]
     var enemyClass = new Gauntlet.GuildHall[getEnemyClass()]
@@ -98,6 +99,8 @@ $(document).ready(function() {
     enemySpecies.strength += enemyClass.strengthBonus
     enemySpecies.intelligence += enemyClass.intelligenceBonus
     console.log("Random Enemy", enemy)
+    enemyName(enemy)
+    printStats(enemy, "enemy")
     return enemy
   }
 
@@ -120,6 +123,31 @@ $(document).ready(function() {
     console.log("Enemy Health", enemy.species.health)
   }
 
+  function enemyName (enemy){
+      var output = [ "<strong>", enemy.playerName, ": </strong>",
+      "<small>", enemy.species.speciesName, enemy.class,
+        (enemy.class.magical) ? "Able to cast " : " Wielding a ",
+        enemy.weapon.toString(),
+        "!</small>"
+      ].join(" ");
+      $("#battleEnemyName").append(output);
+  }
+
+  // Print Stats to the DOM
+  function printStats (player, name){
+    $(`.${name}`).html("")
+    $(`.${name}`).append(`<h3><strong>HEALTH:</strong> <small>${player.species.health}</small><h3>`)
+    if (user.species.isMagical) {
+      $(`.${name}`).append(`<h3><strong>INTELLIGENCE:</strong> <small>${player.species.intelligence}<small></h3>`)
+    } else {
+      $(`.${name}`).append(`<h3><strong>STRENGTH:<strong> <small>${player.species.strength}</small></h3>`)
+    }
+  }
+
+  function updateStats (){
+    printStats(user, "user")
+    printStats(enemy, "enemy")
+  }
   /*
     Show the initial view that accepts player name
    */
@@ -151,6 +179,7 @@ $(document).ready(function() {
       case "card--battleground":
         moveAlong = ($("#player-name").val() !== "");
         console.log("switched to battle")
+        sortAttacks(_weaponName)
         break;
     }
 
@@ -170,7 +199,13 @@ $(document).ready(function() {
   });
 
 
-// Hey, Delaine and Grant! This shit works!
+function sortAttacks(weapon) {
+  if (weapon === "Staff") {
+    console.log("magic user alert")
+    $("#userAttack").addClass("hide-selections")
+    $("#magicAttack").removeClass("hide-selections")
+  }
+}
 
 function sortClasses (species) {
   console.log(species)
@@ -210,6 +245,7 @@ function sortWeapons (classArg) {
     $(".warrior-weapon").removeClass("hide-selections")
   }
   if (classArg === "Wizard") {
+    console.log("you picked wizard")
     $(".warrior-weapon").addClass("hide-selections")
     $(".thief-weapon").addClass("hide-selections")
     $(".valkyrie-weapon").addClass("hide-selections")

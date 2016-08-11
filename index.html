@@ -240,28 +240,28 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-4">
-            <div class="card__button warrior-weapon thief-weapon valkyrie-weapon archer-weapon assassin-weapon ninja-weapon hide-selections">
-              <a class="weapon__link btn btn--big btn--blue " href="#" id="Dagger">
+            <div class="card__button warrior-weapon thief-weapon valkyrie-weapon archer-weapon assassin-weapon ninja-weapon">
+              <a class="weapon__link btn btn--big btn--blue" href="#" id="Dagger">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Dagger</span>
               </a>
             </div>
 
-            <div class="card__button thief-weapon valkyrie-weapon archer-weapon assassin-weapon ninja-weapon hide-selections">
+            <div class="card__button thief-weapon valkyrie-weapon archer-weapon assassin-weapon ninja-weapon">
               <a class="weapon__link btn btn--big btn--blue" href="#" id="Bow">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Bow</span>
               </a>
             </div>
 
-            <div class="card__button warrior-weapon thief-weapon valkyrie-weapon ninja-weapon hide-selections">
+            <div class="card__button warrior-weapon thief-weapon valkyrie-weapon ninja-weapon">
               <a class="weapon__link btn btn--big btn--blue" href="#" id="Sword">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Sword</span>
               </a>
             </div>
 
-            <div class="card__button warrior-weapon valkyrie-weapon monk-weapon berserker-weapon hide-selections">
+            <div class="card__button warrior-weapon valkyrie-weapon monk-weapon berserker-weapon">
               <a class="weapon__link btn btn--big btn--blue" href="#" id="LongSword">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Long Sword</span>
@@ -270,21 +270,21 @@
           </div>
 
           <div class="col-sm-4">
-            <div class="card__button warrior-weapon valkyrie-weapon monk-weapon berserker-weapon hide-selections">
+            <div class="card__button warrior-weapon valkyrie-weapon monk-weapon berserker-weapon">
               <a class="weapon__link btn btn--big btn--blue" href="#" id="WarAxe">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">War Axe</span>
               </a>
             </div>
 
-            <div class="card__button warrior-weapon valkyrie-weapon monk-weapon berserker-weapon hide-selections">
-              <a class="weapon__link btn btn--big btn--blue warrior-weapon valkyrie-weapon monk-weapon berserker-weapon" href="#" id="Mace">
+            <div class="card__button warrior-weapon valkyrie-weapon monk-weapon berserker-weapon">
+              <a class="weapon__link btn btn--big btn--blue" href="#" id="Mace">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Mace</span>
               </a>
             </div>
 
-            <div class="card__button wizard-weapon sorcerer-weapon shaman-weapon conjurer-weapon hide-selections">
+            <div class="card__button wizard-weapon sorcerer-weapon shaman-weapon conjurer-weapon">
               <a class="weapon__link btn btn--big btn--blue" href="#" id="Staff">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Staff</span>
@@ -292,21 +292,21 @@
             </div>
           </div>
           <div class="col-sm-4">
-            <div class="card__button thief-weapon valkyrie-weapon archer-weapon assassin-weapon ninja-weapon hide-selections">
+            <div class="card__button thief-weapon valkyrie-weapon archer-weapon assassin-weapon ninja-weapon">
               <a class="weapon__link btn btn--big btn--blue" href="#" id="CrossBow">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Cross Bow</span>
               </a>
             </div>
 
-            <div class="card__button warrior-weapon valkyrie-weapon monk-weapon berserker-weapon hide-selections">
+            <div class="card__button warrior-weapon valkyrie-weapon monk-weapon berserker-weapon">
               <a class="weapon__link btn btn--big btn--blue" href="#" id="WarHammer">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">War Hammer</span>
               </a>
             </div>
 
-            <div class="card__button thief-weapon valkyrie-weapon archer-weapon monk-weapon assassin-weapon ninja-weapon hide-selections">
+            <div class="card__button thief-weapon valkyrie-weapon archer-weapon monk-weapon assassin-weapon ninja-weapon">
               <a class="weapon__link btn btn--big btn--blue" href="#" id="BrassKnuckles">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Brass Knuckles</span>
@@ -322,8 +322,6 @@
             </a>
           </div>
         </div>
-        </div>
-      </div>
 
       <div class="card__button">
         <a class="card__link btn btn--big btn--orange doBattle"
@@ -345,26 +343,43 @@
           <div class="row">
             <div class="col-sm-4">
               <div class="battle">
-                  <span id="battlePlayerName"> </span>
+                  <h2 id="battlePlayerName"> </h2>
+                  <div class="user stats">
+                  </div>
               </div>
             </div>
+            <div class="card__button">
+              <a class="card__link btn btn--big btn--orange" id="enemyAttack">
+                <span class="btn__prompt">></span>
+                <span class="btn__text">Enemy Attacks!</span>
+              </a>
+            </div>
 
-            <div class="col-sm-4">
-              <div class="battle attack">
-                <button id="enemyAttack"> Enemy Attacks!</button>
-                <button id="userAttack"> You Attack!</button>
-                <button id="magicAttack"> Cast a spell</button>
-              </div>
+            <div class="card__button" id="userAttack">
+              <a class="card__link btn btn--big btn--blue" >
+                <span class="btn__prompt">></span>
+                <span class="btn__text">You Attack!</span>
+              </a>
+            </div>
+
+            <div class="card__button hide-selections" id="magicAttack">
+              <a class="card__link btn btn--big btn--blue" >
+                <span class="btn__prompt">></span>
+                <span class="btn__text">Cast a Spell!</span>
+              </a>
             </div>
 
             <div class="col-sm-4">
               <div class="battle">
-                  <span class="battleEnemy">Enemy</span>
+                  <h2 id="battleEnemyName"></h2>
+                  <div class="enemy stats">
+                  </div>
                 </a>
               </div>
             </div>
           </div>
-
+        </div>
+      </div>
 
     </section>
 
