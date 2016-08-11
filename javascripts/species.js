@@ -8,8 +8,8 @@ var Gauntlet = (function(gauntlet){
     // this.limbs = ["head", "neck", "arm", "leg", "torso"];
     this.skinColor = "tan";
     // this.skinColors = [this.skinColor];
-    this.strength = 90;
-    this.intelligence = 90;
+    this.strength = 9;
+    this.intelligence = 9;
   }
 
   gauntlet.Species.Human = function() {
@@ -25,7 +25,7 @@ var Gauntlet = (function(gauntlet){
 
   gauntlet.Species.Elf = function() {
     this.speciesName = "Elf";
-    this.intelligence += 20;
+    this.intelligence += 2;
 
     // this.skinColors.push("brown", "red", "white", "disease");
     // randomSkin = Math.round(Math.random() * (this.skinColors.length-1));
@@ -36,7 +36,7 @@ var Gauntlet = (function(gauntlet){
 
   gauntlet.Species.Orc = function() {
     this.speciesName = "Orc";
-    this.strength += 20;
+    this.strength += 2;
 
     // this.skinColors.push("brown", "red", "white", "disease");
     // randomSkin = Math.round(Math.random() * (this.skinColors.length-1));

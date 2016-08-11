@@ -22,6 +22,14 @@ var Gauntlet = (function(gauntlet) {
       return target
     }
 
+    this.castSpell = function(target) {
+      var damage = this.species.intelligence + //Insert spell dmg here
+      target.species.health -= damage;
+      console.log(target)
+      return target
+    }
+
+
 
     this.toString = function() {
       var output = [this.playerName,
