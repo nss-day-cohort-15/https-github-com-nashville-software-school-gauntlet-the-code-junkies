@@ -150,6 +150,7 @@ $(document).ready(function() {
       case "card--battleground":
         moveAlong = ($("#player-name").val() !== "");
         console.log("switched to battle")
+        sortAttacks(_weaponName)
         break;
     }
 
@@ -169,7 +170,13 @@ $(document).ready(function() {
   });
 
 
-// Hey, Delaine and Grant! This shit works!
+function sortAttacks(weapon) {
+  if (weapon === "Staff") {
+    console.log("magic user alert")
+    $("#userAttack").addClass("hide-selections")
+    $("#magicAttack").removeClass("hide-selections")
+  }
+}
 
 function sortClasses (species) {
   console.log(species)
@@ -209,6 +216,7 @@ function sortWeapons (classArg) {
     $(".warrior-weapon").removeClass("hide-selections")
   }
   if (classArg === "Wizard") {
+    console.log("you picked wizard")
     $(".warrior-weapon").addClass("hide-selections")
     $(".thief-weapon").addClass("hide-selections")
     $(".valkyrie-weapon").addClass("hide-selections")
