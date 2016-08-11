@@ -45,24 +45,24 @@ var Gauntlet = (function(gauntlet) {
   // orc.setWeapon(new BroadSword());
   // console.log(orc.toString());
 
-  gauntlet.Combatants.Player.prototype.setWeapon = function(newWeapon) {
-    this.weapon = newWeapon;
-  }
+  // gauntlet.Combatants.Player.prototype.setWeapon = function(newWeapon) {
+  //   this.weapon = newWeapon;
+  // }
 
-  gauntlet.Combatants.Player.prototype.generateClass = function() {
-    // Get a random index from the allowed classes array
-    var random = Math.round(Math.random() * (this.allowedClasses.length - 1));
+  // gauntlet.Combatants.Player.prototype.generateClass = function() {
+  //   // Get a random index from the allowed classes array
+  //   var random = Math.round(Math.random() * (this.allowedClasses.length - 1));
 
-    // Get the string at the index
-    var randomClass = this.allowedClasses[random];
+  //   // Get the string at the index
+  //   var randomClass = this.allowedClasses[random];
 
-    // Composes the corresponding player class into the player object
-    this.class = new gauntlet.GuildHall[randomClass]();
+  //   // Composes the corresponding player class into the player object
+  //   this.class = new gauntlet.GuildHall[randomClass]();
 
-    // Add the health bonus
-    this.health += this.class.healthBonus;
-    return this.class;
-  };
+  //   // Add the health bonus
+  //   this.health += this.class.healthBonus;
+  //   return this.class;
+  // };
 
 
   return gauntlet
