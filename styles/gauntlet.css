@@ -67,21 +67,22 @@ body {
   background: -webkit-linear-gradient(#CE5669, #9D0920);
   border-color: #9D0920;
   color: white;
-  background-color: #FF4136;
+  background-color: #9D0920;
 }
+
 
 .btn--blue {
   background: -webkit-linear-gradient(#62A9C7, #3F8DAE);
   border-color: #3F8DAE;
   color: white;
-  background-color: #0074D9;
+  background-color: #3F8DAE;
 }
 
 .btn--yellow {
   background: -webkit-linear-gradient(#FFEDA4, #FFDC54);
   border-color: #FFDC54;
   color: white;
-  background-color: #F3C500;
+  background-color: #FFDC54;
 }
 
 .btn--big {
@@ -198,4 +199,8 @@ body {
   background-color: rgba(255, 255, 255, 0.6);
   padding: 5%;
   border-radius: 5px;
+}
+
+.battleName {
+  text-align: center;
 }
