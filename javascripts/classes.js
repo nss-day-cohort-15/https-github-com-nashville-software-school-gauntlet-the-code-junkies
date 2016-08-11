@@ -121,7 +121,7 @@ var Gauntlet = (function(gauntlet) {
     gauntlet.GuildHall.Stealth = function() {
       this.magical = false;
       this.healthBonus += - 5;
-      this.strengthBonus += 30;
+      this.strengthBonus += 3;
     };
     gauntlet.GuildHall.Stealth.prototype = new gauntlet.GuildHall.PlayerClass();
 

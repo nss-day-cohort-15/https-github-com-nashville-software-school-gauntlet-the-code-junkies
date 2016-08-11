@@ -76,6 +76,14 @@
               </a>
             </div>
           </div>
+
+          <div class="card__button">
+            <a class="class__link btn btn--big btn--yellow" href="#" id="surpriseSpecies">
+              <span class="btn__prompt">></span>
+              <span class="btn__text">Surprise Me</span>
+            </a>
+          </div>
+
           </div>
         </div>
       </div>
@@ -201,7 +209,7 @@
           <!-- Surprise Me Button is Separate from All Other Groups -->
 
           <div class="card__button">
-            <a class="class__link btn btn--big btn--yellow" href="#" id="Surprise">
+            <a class="class__link btn btn--big btn--yellow" href="#" id="surpriseClass">
               <span class="btn__prompt">></span>
               <span class="btn__text">Surprise Me</span>
             </a>
@@ -372,9 +380,18 @@
                 <label>Lightning Bolt<input type="radio" name="spellSelect" value="LightningBolt"></label>
                 <label>Freeze<input type="radio" name="spellSelect" value="Freeze"></label>
                 <label>Boulder Toss<input type="radio" name="spellSelect" value="BoulderToss"></label>
-              </div>
             </div>
-            <div class="col-xs-4">
+            <div>
+              <select id="magicSpellSelect">
+                <option value="Sphere">Sphere</option>
+                <option value="FireBall">Fire Ball</option>
+                <option value="LightningBolt">Lightning Bolt</option>
+                <option value="Freeze">Freeze</option>
+                <option value="BoulderToss">Boulder Toss</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-xs-4">
               <div class="battle">
                   <h2 id="battleEnemyName"></h2>
                   <div class="enemyProgress progress"></div>

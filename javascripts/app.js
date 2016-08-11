@@ -3,10 +3,14 @@ $(document).ready(function() {
 
   // CACHE VARIABLES
 
-  var _speciesName = null;
-  var _className = null;
-  var _weaponName = null;
-  var _playerName = null;
+
+  var _speciesName;
+  var _className;
+  var _weaponName;
+  var _playerName;
+  var userSpell;
+  var chosenSpellName;
+
 
   // EVENT LISTENERS
 
@@ -21,6 +25,32 @@ $(document).ready(function() {
   $(".weapon__link").on("click", getWeaponName)
   $(".doBattle").on("click", createPlayer)
   $(".doBattle").on("click", createEnemy)
+
+
+  // RANDOMIZED PLAYER SELECTION OPTIONS
+
+  $("#surpriseSpecies").on("click", surpriseSpecies)
+  $("#surpriseClass").on("click", surpriseClass)
+  $("#surpriseWeapon").on("click", surpriseWeapon)
+
+  function surpriseSpecies () {
+    console.log("Finding random species")
+    playerSpeciesOptions = ["Human", "Elf", "Orc"]
+    _speciesName = playerSpeciesOptions[Math.round(Math.random() * (playerSpeciesOptions.length - 1))];
+    console.log(_speciesName)
+  }
+
+  function surpriseClass () {
+    console.log("Finding random class")
+    playerClassOptions = ["Warrior", "Wizard", "Thief", "Monk", "Conjurer", "Assassin", "Valkyrie", "Sorcerer", "Archer", "Berserker", "Shaman", "Ninja"]
+    _className = playerClassOptions[Math.round(Math.random() * (playerClassOptions.length - 1))];
+    console.log(_className)
+  }
+
+
+
+
+  function surpriseWeapon () {}
 
   // GRAB USER INPUTS / SELECTIONS AND CACHE THEM
 
@@ -41,6 +71,11 @@ $(document).ready(function() {
   function getWeaponName (e) {
     _weaponName = e.currentTarget.id
     console.log("weapon Name", _weaponName)
+  }
+
+  function getChosenSpellName () {
+    chosenSpellName = $("#magicSpellSelect option:selected").val();
+    console.log(chosenSpellName)
   }
 
 //Creating User
@@ -125,11 +160,17 @@ $(document).ready(function() {
   }
 
   function userCastSpell () {
+    getChosenSpellName();
+    userSpell =  new Gauntlet.SpellBook[chosenSpellName]();
+    user.chosenSpell = userSpell;
+
     user.castSpell(enemy);
     updateStats()
     enemy.attack(user)
     checkHealth()
-    console.log("Enemy Health", enemy.species.health)
+    console.log("Enemy Health", enemy.species.health);
+    console.log(user, enemy);
+    updateStats()
   }
 
   function enemyName (enemy){
