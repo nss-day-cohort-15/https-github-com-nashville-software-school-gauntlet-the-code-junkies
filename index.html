@@ -12,6 +12,10 @@
 <body>
 
   <article id="game-container">
+  <iframe id="buttonClick"
+    src="https://www.youtube.com/embed/XGSy3_Czz8k">
+  </iframe>
+  <!-- <audio id="buttonClicked" src="https://youtu.be/Qbj3_YvTma8"> -->
 
 <!-- NAME FIELD -->
 
@@ -28,7 +32,7 @@
            href="#"
            next="card--species">
           <span class="btn__prompt">></span>
-          <span class="btn__text">Select Species</span>
+          <span class="btn__text">Begin</span>
         </a>
       </div>
     </section>
@@ -94,7 +98,7 @@
            href="#"
            next="card--class">
           <span class="btn__prompt">></span>
-          <span class="btn__text">Select Class</span>
+          <span class="btn__text">Select your Character</span>
         </a>
       </div>
     </section>
@@ -265,60 +269,70 @@
               <a class="weapon__link btn btn--big btn--blue select" id="Dagger">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Dagger</span>
+                <img src="images/dagger.jpeg" class="classImg">
               </a>
             </div>
             <div class="col-xs-4 card__button thief-weapon valkyrie-weapon archer-weapon assassin-weapon ninja-weapon">
               <a class="weapon__link btn btn--big btn--blue select" id="Bow">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Bow</span>
+                <img src="images/bow.jpg" class="classImg">
               </a>
             </div>
             <div class="col-xs-4 card__button warrior-weapon thief-weapon valkyrie-weapon ninja-weapon">
               <a class="weapon__link btn btn--big btn--blue select" id="Sword">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Sword</span>
+                <img src="images/sword.jpg" class="classImg">
               </a>
             </div>
             <div class="col-xs-4 card__button warrior-weapon valkyrie-weapon monk-weapon berserker-weapon">
               <a class="weapon__link btn btn--big btn--blue select" id="LongSword">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Long Sword</span>
+                <img src="images/longSword.jpg" class="classImg">
               </a>
             </div>
             <div class="col-xs-4 card__button warrior-weapon valkyrie-weapon monk-weapon berserker-weapon">
               <a class="weapon__link btn btn--big btn--blue select" id="WarAxe">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">War Axe</span>
+                <img src="images/warAxe.jpg" class="classImg">
               </a>
             </div>
             <div class="col-xs-4 card__button warrior-weapon valkyrie-weapon monk-weapon berserker-weapon">
               <a class="weapon__link btn btn--big btn--blue select" id="Mace">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Mace</span>
+                <img src="images/mace.png" class="classImg">
               </a>
             </div>
             <div class="col-xs-4 card__button wizard-weapon sorcerer-weapon shaman-weapon conjurer-weapon">
               <a class="weapon__link btn btn--big btn--blue select" id="Staff">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Staff</span>
+                <img src="images/staff.jpg" class="classImg">
               </a>
             </div>
             <div class="col-xs-4 card__button thief-weapon valkyrie-weapon archer-weapon assassin-weapon ninja-weapon">
               <a class="weapon__link btn btn--big btn--blue select" id="CrossBow">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Cross Bow</span>
+                <img src="images/crossBow.png" class="classImg">
               </a>
             </div>
             <div class="col-xs-4 card__button warrior-weapon valkyrie-weapon monk-weapon berserker-weapon">
               <a class="weapon__link btn btn--big btn--blue select" id="WarHammer">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">War Hammer</span>
+                <img src="images/warHammer.jpg" class="classImg">
               </a>
             </div>
             <div class="col-xs-4 card__button thief-weapon valkyrie-weapon archer-weapon monk-weapon assassin-weapon ninja-weapon">
               <a class="weapon__link btn btn--big btn--blue select" id="BrassKnuckles">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Brass Knuckles</span>
+                <img src="images/brassKnuckles.jpg" class="classImg">
               </a>
             </div>
         </div>
@@ -357,7 +371,7 @@
           <div class="row row-eq-height">
             <div class="col-xs-4 player">
               <div class="battle">
-                  <h2 id="battlePlayerName"> </h2>
+                  <h2 id="battlePlayerName" class="battleName"> </h2>
                   <div id="userImage"></div>
                   <div class="userProgress progress"></div>
                   <div class="user stats">
@@ -390,10 +404,27 @@
                 </select>
               </div>
             </div>
+            <div>
+                <table id="tableWins" class="table">
+                  <thead>
+                    <th> WINS </th>
+                    <th> LOSSES </th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td id="playerWins"></td>
+                      <td id="playerLosses"></td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+              <div id="playerDefeated">
+
+              </div>
           </div>
           <div class="col-xs-4 player">
               <div class="battle">
-                  <h2 id="battleEnemyName"></h2>
+                  <h2 id="battleEnemyName" class="battleName"></h2>
                   <div id="enemyImage"></div>
                   <div class="enemyProgress progress"></div>
                   <div class="enemy stats">

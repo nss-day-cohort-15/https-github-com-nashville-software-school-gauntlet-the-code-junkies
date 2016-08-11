@@ -119,10 +119,6 @@ body {
 
 /* Battle Field */
 
-.battle {
-  height: 300px;
-}
-
 .attack {
   position: relative;
   background-color: #53A9CE;
@@ -196,11 +192,34 @@ body {
 }
 
 .player {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.7);
   padding: 5%;
   border-radius: 5px;
 }
 
 .battleName {
   text-align: center;
+}
+
+#buttonClick {
+  display: none;
+}
+
+#magicSpellSelect {
+  display: block;
+  margin: 0 auto;
+  background-color: white;
+  box-shadow: 1px 1px 1px 3px #aaa;
+  border-radius: 2px;
+}
+
+.battleName small {
+  color: black;
+  font-weight: bold;
+}
+
+#tableWins h4, th {
+  background-color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  padding: 3px;
 }

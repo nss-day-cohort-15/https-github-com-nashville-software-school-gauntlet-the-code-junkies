@@ -2,18 +2,16 @@
 $(document).ready(function() {
 
   // CACHE VARIABLES
-
-
   var _speciesName = null;
   var _className = null;
   var _weaponName = null;
   var _playerName = null;
   var userSpell;
   var chosenSpellName;
-
+  var playerWins = 0;
+  var playerLosses = 0;
 
   // EVENT LISTENERS
-
   var user;
   var enemy;
   var userHealth;
@@ -37,7 +35,6 @@ $(document).ready(function() {
     console.log("Finding random species")
     playerSpeciesOptions = ["Human", "Elf", "Orc"]
     _speciesName = playerSpeciesOptions[Math.round(Math.random() * (playerSpeciesOptions.length - 1))];
-    console.log(_speciesName)
   }
 
   function surpriseClass () {
@@ -54,7 +51,6 @@ $(document).ready(function() {
       playerClassOptions = ["Warrior", "Wizard", "Thief", "Berserker", "Shaman", "Ninja"]
       _className = playerClassOptions[Math.round(Math.random() * (playerClassOptions.length - 1))];
     }
-    console.log(_className)
   }
 
   function surpriseWeapon () {
@@ -86,7 +82,6 @@ $(document).ready(function() {
       playerWeaponOptions = ["LongSword", "WarAxe", "WarHammer", "Mace"]
       _weaponName = playerWeaponOptions[Math.round(Math.random() * (playerWeaponOptions.length - 1))];
     }
-    console.log(_weaponName)
   }
 
   // GRAB USER INPUTS / SELECTIONS AND CACHE THEM
@@ -97,22 +92,18 @@ $(document).ready(function() {
 
   function getSpeciesName (e){
     _speciesName = e.currentTarget.id
-    console.log("species Name", _speciesName)
   }
 
   function getClassName (e) {
     _className = e.currentTarget.id
-    console.log("class Name", _className)
   }
 
   function getWeaponName (e) {
     _weaponName = e.currentTarget.id
-    console.log("weapon Name", _weaponName)
   }
 
   function getChosenSpellName () {
     chosenSpellName = $("#magicSpellSelect option:selected").val();
-    console.log(chosenSpellName)
   }
 
 //Creating User
@@ -132,11 +123,12 @@ $(document).ready(function() {
     chosenSpecies.intelligence += chosenClass.intelligenceBonus
     userHealth = chosenSpecies.health
     $("#battlePlayerName").append(`<p> ${user.toString()} </p>`)
+    printWinsAndLosses()
     addPicture(chosenClass.name, "user")
     createProgressBar(user, "user")
     printStats(user, "user")
     return user
-    }
+  }
 
 
     // Functions to create random Enemy, May be Combined tomorrow, just getting base functionality
@@ -192,7 +184,6 @@ $(document).ready(function() {
     user.attack(enemy);
     updateStats()
     checkHealth()
-    console.log("Your health", user.species.health)
   }
 
   function userCastSpell () {
@@ -204,8 +195,6 @@ $(document).ready(function() {
     enemy.attack(user)
     updateStats()
     checkHealth()
-    console.log("Enemy Health", enemy.species.health);
-    console.log(user, enemy);
   }
 
   function enemyName (enemy){
@@ -232,32 +221,37 @@ $(document).ready(function() {
     var totalHealth = `${name}Health`
     if (name === "user"){
       playerHealthPercentage = Math.floor(player.species.health/userHealth*100)
+      // if (playerHealthPercentage<25){
+      //   $(`#${name}ProgressBar`).css("background-color", "red")
+      // }
+      checkProgress(playerHealthPercentage, "user")
     } else {
       playerHealthPercentage = Math.floor(player.species.health/enemyHealth*100)
+      // if (playerHealthPercentage<25){
+      //   $(`#${name}ProgressBar`).css("background-color", "red")
+      // }
+      checkProgress(playerHealthPercentage, "enemy")
     }
-    $(`.${name}Progress`).append(`<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="${player.species.health}" aria-valuemin="0" aria-valuemax="${name}Health}" style="width: ${playerHealthPercentage}%">
+    $(`.${name}Progress`).append(`<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="${player.species.health}" aria-valuemin="0" aria-valuemax="${name}Health}" id="${name}ProgressBar" style="width: ${playerHealthPercentage}%">
       ${playerHealthPercentage}% Health
       </div>`)
-    checkProgress(playerHealthPercentage)
   }
 
-function checkProgress(playerHealth){
-  if (playerHealth<25){
-      $(".progress-bar").css("background-color", "red")
-    }
+function checkProgress(playerHealth, name){
+  if (playerHealthPercentage<25){
+        $(`#${name}ProgressBar`).css("background-color", "red")
+  }
 }
-
-
 
   // Print Stats to the DOM
   function printStats (player, name){
     $(`.${name}`).html("")
-    $(`.${name}`).append(`<h3><strong>HEALTH:</strong> <small>${player.species.health}</small><h3>`)
-    if (user.class.magical) {
-      $(`.${name}`).append(`<h3><strong>INTELLIGENCE:</strong> <small>${player.species.intelligence}<small></h3>`)
-    } else {
-      $(`.${name}`).append(`<h3><strong>STRENGTH:<strong> <small>${player.species.strength}</small></h3>`)
-    }
+    $(`.${name}`).append(`<h3><strong>HEALTH:</strong> ${player.species.health}<h3>`)
+  }
+
+  function printWinsAndLosses(){
+    $("#playerWins").html(`<h4> ${playerWins} </h4>`)
+    $("#playerLosses").html(`<h4> ${playerLosses} </h4>`)
   }
 
   function updateStats (){
@@ -272,6 +266,7 @@ function checkProgress(playerHealth){
       console.log("Enemy Wins!")
       $(".enemyWins").removeClass("hide-selections")
       $(".message").append(`<h1> Game Over... </h1> <p> You were defeated by ${enemy.playerName}. </p> <p> Your health: ${user.species.health} </p> <p> Enemy health: ${enemy.species.health} </p> <p> Better luck next time! </p> <button class="restartGame">Restart Game</button> <br> <button class="fightAgain"> Fight Again ! </button>`)
+      playerLosses ++
       $(".restartGame").on("click", restartGame)
       $(".fightAgain").on("click", fightAgain)
     }
@@ -279,6 +274,7 @@ function checkProgress(playerHealth){
       console.log("You win!")
       $(".userWins").removeClass("hide-selections")
       $(".message").append(`<h1> You won!! </h1> <p> You defeated ${enemy.playerName}. </p> <p> Your health: ${user.species.health} </p> <p> Enemy health: ${enemy.species.health} </p> <p> Good work fighter! </p> <button class="restartGame">Restart Game</button> <br> <button class="fightAgain"> Fight Again ! </button>`)
+      playerWins ++
       $(".restartGame").on("click", restartGame)
       $(".fightAgain").on("click", fightAgain)
     }
@@ -289,6 +285,8 @@ function checkProgress(playerHealth){
 
   function restartGame () {
     location.reload()
+    playerWins = 0
+    playerLosses = 0
     // $(".message").html("");
     // $("#battle-field").html("");
     // $(".userWins").addClass("hide-selections");
@@ -303,6 +301,7 @@ function checkProgress(playerHealth){
     $("#battleEnemyName").html("");
     user.species.health = userHealth;
     $("#enemyImage").html("");
+    printWinsAndLosses()
     createEnemy();
     updateStats()
   }
