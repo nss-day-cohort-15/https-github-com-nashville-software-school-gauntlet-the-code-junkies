@@ -55,13 +55,6 @@ $(document).ready(function() {
     chosenSpecies.intelligence += chosenClass.intelligenceBonus
     console.log("user info", user.toString())
     $("#battlePlayerName").append(`<p> ${user.toString()} </p>`)
-    // console.log("species name ", _speciesName)
-    // console.log("class name ", _className)
-    // console.log("weapon name ", _weaponName)
-    // console.log("species intelligence", chosenSpecies.intelligence)
-    // console.log("chosen Species", chosenSpecies)
-    // console.log("chosen class", chosenClass)
-    // console.log("chosen weapon", chosenWeapon)
     console.log("User so far", user)
     return user
     }
