@@ -3,6 +3,10 @@ body {
   margin: 0;
   padding: 10px;
   font-size: 3em;
+  background-image: url(../images/backgroundName.jpg);
+  background-repeat: none;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 .hide-selections {
@@ -51,28 +55,31 @@ body {
   color: #888;
   border-radius: 5px;
   display: inline-block;
-  margin: 10px;
+  margin: 15px;
   font-size: 18px;
   text-transform: uppercase;
   font-weight: 600;
   padding: 10px 5px;
-  min-width: 260px;
+  min-width: 250px;
 }
 
 .btn--orange {
-  border-color: #FF4136;
+  background: -webkit-linear-gradient(#CE5669, #9D0920);
+  border-color: #9D0920;
   color: white;
   background-color: #FF4136;
 }
 
 .btn--blue {
-  border-color: #0074D9;
+  background: -webkit-linear-gradient(#62A9C7, #3F8DAE);
+  border-color: #3F8DAE;
   color: white;
   background-color: #0074D9;
 }
 
 .btn--yellow {
-  border-color: #E4BD00;
+  background: -webkit-linear-gradient(#FFEDA4, #FFDC54);
+  border-color: #FFDC54;
   color: white;
   background-color: #F3C500;
 }
@@ -99,11 +106,13 @@ body {
   border-radius: 5px 0 0 5px;
   left: 37px;
   float: left;
+  vertical-align: middle;
 }
 
 .btn__text {
   padding: 0 50px 0 20px;
   border-radius: 0 5px 5px 0;
+  max-width: 90%;
 }
 
 
@@ -174,7 +183,7 @@ body {
 .selectedItem {
   box-shadow: 2px 2px 2px 5px #aaa;
   text-decoration: none;
-  background-color: white;
+  background: white;
   color: #888;
   border-radius: 5px;
   display: inline-block;
@@ -183,6 +192,10 @@ body {
   text-transform: uppercase;
   font-weight: 600;
   padding: 15px 10px;
-  min-width: 260px;
 }
+
+.player {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 5%;
+  border-radius: 5px;
 }
