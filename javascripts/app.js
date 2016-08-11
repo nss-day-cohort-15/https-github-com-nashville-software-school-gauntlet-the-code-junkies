@@ -1,25 +1,21 @@
-/*
-  Test code to generate a human player and an orc player
- */
-
-
-/*
-  Test code to generate a spell
- */
-// var spell = new Gauntlet.SpellBook.Sphere();
-// console.log("spell: ", spell.toString());
-
 
 $(document).ready(function() {
+
+  // CACHE VARIABLES
+
   var _speciesName;
   var _className;
   var _weaponName;
+
+  // EVENT LISTENERS
 
   $(".name").on("click", getPlayerName)
   $(".species__link").on("click", getSpeciesName)
   $(".class__link").on("click", getClassName)
   $(".weapon__link").on("click", getWeaponName)
   $(".battle").on("click", createPlayer)
+
+  // GRAB USER INPUTS / SELECTIONS AND CACHE THEM
 
   function getPlayerName (e){
     var playerName = $("#player-name").val()
@@ -83,14 +79,16 @@ $(document).ready(function() {
     switch (nextCard) {
       case "card--species":
         moveAlong = ($("#player-name").val() !== "");
-        // thing.choice = selectedSpecies
-        //event.currentTarget.id
+        console.log("switched to species")
         break;
       case "card--class":
         moveAlong = ($("#player-name").val() !== "");
+        console.log("switched to class")
+        sortClasses(_speciesName)
         break;
       case "card--weapon":
         moveAlong = ($("#player-name").val() !== "");
+        console.log("switched to weapons")
         break;
     }
 
@@ -108,5 +106,33 @@ $(document).ready(function() {
     $(".card").hide();
     $("." + previousCard).show();
   });
+
+// Hey, Delaine and Grant! This shit works!
+
+function sortClasses (species) {
+  console.log(species)
+  if (species === "Human") {
+    $(".human-classes").removeClass("hide-selections")
+    $(".elf-classes").addClass("hide-selections")
+    $(".orc-classes").addClass("hide-selections")
+  }
+  if (species === "Elf") {
+    $(".elf-classes").removeClass("hide-selections")
+    $(".human-classes").addClass("hide-selections")
+    $(".orc-classes").addClass("hide-selections")
+  }
+  if (species === "Orc") {
+    $(".orc-classes").removeClass("hide-selections")
+    $(".elf-classes").addClass("hide-selections")
+    $(".human-classes").addClass("hide-selections")
+  }
+}
+
+function sortWeapons () {}
+
+//The functionality above should be applied to weapons as well
+//We just need to decide which weapons go to which classes and
+//I can flesh this out in the morning!
+
 
 });
