@@ -238,7 +238,16 @@ $(document).ready(function() {
     $(`.${name}Progress`).append(`<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="${player.species.health}" aria-valuemin="0" aria-valuemax="${name}Health}" style="width: ${playerHealthPercentage}%">
       ${playerHealthPercentage}% Health
       </div>`)
+    checkProgress(playerHealthPercentage)
   }
+
+function checkProgress(playerHealth){
+  if (playerHealth<25){
+      $(".progress-bar").css("background-color", "red")
+    }
+}
+
+
 
   // Print Stats to the DOM
   function printStats (player, name){
