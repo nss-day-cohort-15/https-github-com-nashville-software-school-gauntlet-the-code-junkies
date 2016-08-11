@@ -24,6 +24,32 @@ $(document).ready(function() {
   $(".doBattle").on("click", createPlayer)
   $(".doBattle").on("click", createEnemy)
 
+
+  // RANDOMIZED PLAYER SELECTION OPTIONS
+
+  $("#surpriseSpecies").on("click", surpriseSpecies)
+  $("#surpriseClass").on("click", surpriseClass)
+  $("#surpriseWeapon").on("click", surpriseWeapon)
+
+  function surpriseSpecies () {
+    console.log("Finding random species")
+    playerSpeciesOptions = ["Human", "Elf", "Orc"]
+    _speciesName = playerSpeciesOptions[Math.round(Math.random() * (playerSpeciesOptions.length - 1))];
+    console.log(_speciesName)
+  }
+
+  function surpriseClass () {
+    console.log("Finding random class")
+    playerClassOptions = ["Warrior", "Wizard", "Thief", "Monk", "Conjurer", "Assassin", "Valkyrie", "Sorcerer", "Archer", "Berserker", "Shaman", "Ninja"]
+    _className = playerClassOptions[Math.round(Math.random() * (playerClassOptions.length - 1))];
+    console.log(_className)
+  }
+
+
+
+
+  function surpriseWeapon () {}
+
   // GRAB USER INPUTS / SELECTIONS AND CACHE THEM
 
   function getPlayerName (e){
