@@ -106,10 +106,12 @@ $(document).ready(function() {
 
   function attackTheUser () {
     enemy.attack(user);
+    console.log("Your health", user.species.health)
   }
 
   function attackTheEnemy () {
     user.attack(enemy);
+    console.log("Enemy Health", enemy.species.health)
   }
 
   /*
