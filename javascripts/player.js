@@ -23,15 +23,11 @@ var Gauntlet = (function(gauntlet) {
     }
 
     this.castSpell = function(target) {
-      var fireBall = new Gauntlet.SpellBook.FireBall;
-      // console.log(fireBall)
       var damage = this.species.intelligence + fireBall.damage
       target.species.health -= damage;
       console.log(target)
       return target
     }
-
-
 
     this.toString = function() {
       var output = ["<strong>", this.playerName,  "</strong>",

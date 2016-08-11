@@ -115,8 +115,16 @@ $(document).ready(function() {
   }
 
   function userCastSpell () {
+    var Sphere = new Gauntlet.SpellBook.Sphere;
+    var FireBall = new Gauntlet.SpellBook.FireBall;
+    var LightningBolt = new Gauntlet.SpellBook.LightningBolt;
+    var Freeze = new Gauntlet.SpellBook.Freeze;
+    var BoulderToss = new Gauntlet.SpellBook.BoulderToss;
+
+
     user.castSpell(enemy);
     console.log("Enemy Health", enemy.species.health)
+    updateStats()
   }
 
   function enemyName (enemy){
