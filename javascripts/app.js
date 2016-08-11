@@ -216,7 +216,7 @@ function sortAttacks(weapon) {
   if (weapon === "Staff") {
     console.log("magic user alert")
     $("#userAttack").addClass("hide-selections")
-    $("#magicAttack").removeClass("hide-selections")
+    $("#magicInput").removeClass("hide-selections")
   }
 }
 
