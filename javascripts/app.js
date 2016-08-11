@@ -228,6 +228,20 @@ $(document).ready(function() {
       $(".message").append(`<h1> You won!! </h1> <p> You defeated ${enemy.playerName}. </p> <p> Your health: ${user.species.health} </p> <p> Enemy health: ${enemy.species.health} </p> <p> Good work fighter! </p> `)
     }
   }
+
+  $('[data-toggle="popover"]').popover()
+  $(".btn--big").on("mouseenter", showPopover)
+  $(".btn--big").on("mouseleave", hidePopover)
+
+  function showPopover(e){
+    console.log("event", e)
+    $(e.currentTarget).popover('show')
+  }
+
+  function hidePopover(e){
+    console.log("event", e)
+    $(e.currentTarget).popover('hide')
+  }
   /*
     Show the initial view that accepts player name
    */

@@ -14,48 +14,49 @@ var Gauntlet = (function(gauntlet){
 
     gauntlet.Armory.BrassKnuckles = function() {
       this.name = "brass knuckles";
-      this.damage = 20;
+      this.damage += 3;
+      this.hands = 1;
     };
     gauntlet.Armory.BrassKnuckles.prototype = new gauntlet.Armory.Weapon();
 
     gauntlet.Armory.Dagger = function() {
       this.name = "dagger";
-      this.damage = 4;
+      this.damage += 4;
       this.hands = 1;
     };
     gauntlet.Armory.Dagger.prototype = new gauntlet.Armory.Weapon();
 
     gauntlet.Armory.Sword = function() {
       this.name = "sword";
-      this.damage = 10;
+      this.damage += 5;
       this.hands = 1;
     };
     gauntlet.Armory.Sword.prototype = new gauntlet.Armory.Weapon();
 
    gauntlet.Armory.Mace = function() {
       this.name = "mace";
-      this.damage = 10;
+      this.damage += 5;
       this.hands = 1;
     };
     gauntlet.Armory.Mace.prototype = new gauntlet.Armory.Weapon();
 
-    gauntlet.Armory.BroadSword = function() {
-      this.name = "broad sword";
-      this.damage = 14;
-      this.hands = 2
+    gauntlet.Armory.LongSword = function() {
+      this.name = "long sword";
+      this.damage += 11;
+      this.hands = 2;
     };
     gauntlet.Armory.BroadSword.prototype = new gauntlet.Armory.Weapon();
 
      gauntlet.Armory.WarAxe = function() {
       this.name = "war axe";
-      this.damage = 22;
+      this.damage += 14;
       this.hands = 2
     };
     gauntlet.Armory.WarAxe.prototype = new gauntlet.Armory.Weapon();
 
     gauntlet.Armory.WarHammer = function() {
       this.name = "war hammer";
-      this.damage = 24;
+      this.damage += 13;
       this.hands = 2
     };
     gauntlet.Armory.WarHammer.prototype = new gauntlet.Armory.Weapon();
@@ -64,8 +65,8 @@ var Gauntlet = (function(gauntlet){
 
     gauntlet.Armory.CrossBow = function() {
       this.name = "crossbow";
-      this.damage = 18;
-      this.hands = 1;
+      this.damage += 12;
+      this.hands = 2;
     };
     gauntlet.Armory.CrossBow.prototype = new gauntlet.Armory.Weapon();
 
@@ -73,7 +74,8 @@ var Gauntlet = (function(gauntlet){
 
     gauntlet.Armory.Bow = function() {
       this.name = "bow";
-      this.damage = 12;
+      this.damage += 3;
+      this.hands = 1;
     };
     gauntlet.Armory.Bow.prototype = new gauntlet.Armory.Weapon();
 
