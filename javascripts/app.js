@@ -111,11 +111,15 @@ $(document).ready(function() {
     enemy.attack(user);
     user.attack(enemy);
     updateStats()
+    checkHealth()
     console.log("Your health", user.species.health)
   }
 
   function userCastSpell () {
     user.castSpell(enemy);
+    updateStats()
+    enemy.attack(user)
+    checkHealth()
     console.log("Enemy Health", enemy.species.health)
   }
 
@@ -133,7 +137,7 @@ $(document).ready(function() {
   function printStats (player, name){
     $(`.${name}`).html("")
     $(`.${name}`).append(`<h3><strong>HEALTH:</strong> <small>${player.species.health}</small><h3>`)
-    if (user.species.isMagical) {
+    if (user.class.magical) {
       $(`.${name}`).append(`<h3><strong>INTELLIGENCE:</strong> <small>${player.species.intelligence}<small></h3>`)
     } else {
       $(`.${name}`).append(`<h3><strong>STRENGTH:<strong> <small>${player.species.strength}</small></h3>`)
@@ -143,6 +147,19 @@ $(document).ready(function() {
   function updateStats (){
     printStats(user, "user")
     printStats(enemy, "enemy")
+  }
+
+  function checkHealth (){
+    if (user.species.health <= 0 && user.species.health < enemy.species.health) {
+      console.log("Enemy Wins!")
+      $(".enemyWins").removeClass("hide-selections")
+      $(".message").append(`<h1> Game Over... </h1> <p> You were defeated by ${enemy.playerName}. </p> <p> Your health: ${user.species.health} </p> <p> Enemy health: ${enemy.species.health} </p> <p> Better luck next time! </p>`)
+    }
+    if (enemy.species.health <=0 && enemy.species.health < user.species.health) {
+      console.log("You win!")
+      $(".userWins").removeClass("hide-selections")
+      $(".message").append(`<h1> You won!! </h1> <p> You defeated ${enemy.playerName}. </p> <p> Your health: ${user.species.health} </p> <p> Enemy health: ${enemy.species.health} </p> <p> Good work fighter! </p> `)
+    }
   }
   /*
     Show the initial view that accepts player name

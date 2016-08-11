@@ -20,8 +20,6 @@ body {
   min-width: 500px;
 }
 
-
-
 /*
   Section styles
  */
@@ -128,4 +126,40 @@ body {
   top: 80%;
   left: 25%;
   z-index: 10;
+}
+
+.userWins {
+  background-color: rgba(37, 200, 73, 0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 20;
+}
+
+.message{
+  background-color: rgba(255,255,255,0.7);
+  position: relative;
+  display: block;
+  margin: 10% 20%;
+  padding: 5%;
+}
+
+.enemyWins {
+  background-color: rgba(240, 77, 89, 0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 20;
+}
+
+.message{
+  background-color: rgba(255,255,255,0.7);
+  position: relative;
+  display: block;
+  margin: 10% 20%;
+  padding: 5%;
 }
