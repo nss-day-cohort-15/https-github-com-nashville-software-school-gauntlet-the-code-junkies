@@ -42,18 +42,21 @@ var Gauntlet = (function(gauntlet){
     gauntlet.Armory.BroadSword = function() {
       this.name = "broad sword";
       this.damage = 14;
+      this.hands = 2
     };
     gauntlet.Armory.BroadSword.prototype = new gauntlet.Armory.Weapon();
 
      gauntlet.Armory.WarAxe = function() {
       this.name = "war axe";
       this.damage = 22;
+      this.hands = 2
     };
     gauntlet.Armory.WarAxe.prototype = new gauntlet.Armory.Weapon();
 
     gauntlet.Armory.WarHammer = function() {
       this.name = "war hammer";
       this.damage = 24;
+      this.hands = 2
     };
     gauntlet.Armory.WarHammer.prototype = new gauntlet.Armory.Weapon();
 

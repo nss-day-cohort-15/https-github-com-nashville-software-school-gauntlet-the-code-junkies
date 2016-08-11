@@ -103,6 +103,7 @@ $(document).ready(function() {
 
   $("#enemyAttack").on("click", attackTheUser)
   $("#userAttack").on("click", attackTheEnemy)
+  $("#magicAttack").on("click", userCastSpell)
 
   function attackTheUser () {
     enemy.attack(user);
@@ -111,6 +112,11 @@ $(document).ready(function() {
 
   function attackTheEnemy () {
     user.attack(enemy);
+    console.log("Enemy Health", enemy.species.health)
+  }
+
+  function userCastSpell () {
+    user.castSpell(enemy);
     console.log("Enemy Health", enemy.species.health)
   }
 
