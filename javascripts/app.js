@@ -4,10 +4,10 @@ $(document).ready(function() {
   // CACHE VARIABLES
 
 
-  var _speciesName;
-  var _className;
-  var _weaponName;
-  var _playerName;
+  var _speciesName = null;
+  var _className = null;
+  var _weaponName = null;
+  var _playerName = null;
   var userSpell;
   var chosenSpellName;
 
