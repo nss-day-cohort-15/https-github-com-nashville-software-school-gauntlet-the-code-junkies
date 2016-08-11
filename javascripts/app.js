@@ -6,43 +6,44 @@ $(document).ready(function() {
   var _speciesName;
   var _className;
   var _weaponName;
+  var _playerName;
 
   // EVENT LISTENERS
+
+  var user;
+  var enemy;
 
   $(".name").on("click", getPlayerName)
   $(".species__link").on("click", getSpeciesName)
   $(".class__link").on("click", getClassName)
   $(".weapon__link").on("click", getWeaponName)
-  $(".battle").on("click", createPlayer)
+  $(".doBattle").on("click", createPlayer)
+  $(".doBattle").on("click", createEnemy)
 
   // GRAB USER INPUTS / SELECTIONS AND CACHE THEM
 
   function getPlayerName (e){
-    var playerName = $("#player-name").val()
-    console.log("player name ", playerName)
-    return playerName
+    _playerName = $("#player-name").val()
   }
 
   function getSpeciesName (e){
     _speciesName = e.currentTarget.id
     console.log("species Name", _speciesName)
-    // setSpeciesName(speciesName)
   }
 
   function getClassName (e) {
     _className = e.currentTarget.id
     console.log("class Name", _className)
-    // setClassName(className)
   }
 
   function getWeaponName (e) {
     _weaponName = e.currentTarget.id
     console.log("weapon Name", _weaponName)
-    // setWeaponName(weaponName)
   }
 
+//Creating User
   function createPlayer (){
-    var user = new Gauntlet.Combatants.Player(getPlayerName()) //Get name dynamically from DOM
+    user = new Gauntlet.Combatants.Player(getPlayerName())
     var chosenSpecies = new Gauntlet.Species[_speciesName]()
     var chosenClass = new Gauntlet.GuildHall[_className]()
     var chosenWeapon = new Gauntlet.Armory[_weaponName]()
@@ -52,6 +53,8 @@ $(document).ready(function() {
     chosenSpecies.health += chosenClass.healthBonus
     chosenSpecies.strength += chosenClass.strengthBonus
     chosenSpecies.intelligence += chosenClass.intelligenceBonus
+    console.log("user info", user.toString())
+    $("#battlePlayerName").append(`<p> ${user.toString()} </p>`)
     // console.log("species name ", _speciesName)
     // console.log("class name ", _className)
     // console.log("weapon name ", _weaponName)
@@ -60,6 +63,60 @@ $(document).ready(function() {
     // console.log("chosen class", chosenClass)
     // console.log("chosen weapon", chosenWeapon)
     console.log("User so far", user)
+    return user
+    }
+
+
+    // Functions to create random Enemy, May be Combined tomorrow, just getting base functionality
+  function getEnemyName () {
+    var enemyNamesOptions = ["Some guy off the street", "The town Drunk", "Insane Asylum escapee", "Yo Momma", "Grant", "Delaine", "Casey", "Sscotth"];
+    var enemyName = enemyNamesOptions[Math.round(Math.random() * (enemyNamesOptions.length - 1))];
+    return enemyName
+  }
+
+  function getEnemySpecies() {
+    var enemySpeciesOptions = ["Human", "Elf", "Orc"];
+    var enemySpecies = enemySpeciesOptions[Math.round(Math.random() * (enemySpeciesOptions.length - 1))];
+    return enemySpecies
+  }
+
+  function getEnemyClass() {
+    var enemyClassOptions = ["Warrior", "Valkyrie", "Berserker", "Monk", "Thief", "Ninja", "Assassin", "Archer"];
+    var enemyClass = enemyClassOptions[Math.round(Math.random() * (enemyClassOptions.length - 1))];
+    return enemyClass
+  }
+
+  function getEnemyWeapon () {
+    var enemyWeaponOptions = ["BrassKnuckles", "Sword", "Mace", "Dagger", "BroadSword", "WarHammer", "CrossBow", "Bow"];
+    var enemyWeapon = enemyWeaponOptions[Math.round(Math.random() * (enemyWeaponOptions.length - 1))];
+    return enemyWeapon
+  }
+//End of creating enemy functions
+
+    function createEnemy() {
+    enemy = new Gauntlet.Combatants.Player(getEnemyName())
+    var enemySpecies = new Gauntlet.Species[getEnemySpecies()]
+    var enemyClass = new Gauntlet.GuildHall[getEnemyClass()]
+    var enemyWeapon = new Gauntlet.Armory[getEnemyWeapon()]
+    enemy.species = enemySpecies
+    enemy.class = enemyClass
+    enemy.weapon = enemyWeapon
+    enemySpecies.health += enemyClass.healthBonus
+    enemySpecies.strength += enemyClass.strengthBonus
+    enemySpecies.intelligence += enemyClass.intelligenceBonus
+    console.log("Random Enemy", enemy)
+    return enemy
+  }
+
+  $("#enemyAttack").on("click", attackTheUser)
+  $("#userAttack").on("click", attackTheEnemy)
+
+  function attackTheUser () {
+    enemy.attack(user);
+  }
+
+  function attackTheEnemy () {
+    user.attack(enemy);
   }
 
   /*
@@ -72,7 +129,6 @@ $(document).ready(function() {
     move on to the next view.
    */
   $(".card__link").click(function(e) {
-    console.log("clicked", this)
     var nextCard = $(this).attr("next");
     var moveAlong = false;
 
@@ -91,6 +147,10 @@ $(document).ready(function() {
         console.log("switched to weapons")
         sortWeapons(_className)
         break;
+      case "card--battleground":
+        moveAlong = ($("#player-name").val() !== "");
+        console.log("switched to battle")
+        break;
     }
 
     if (moveAlong) {
@@ -107,6 +167,7 @@ $(document).ready(function() {
     $(".card").hide();
     $("." + previousCard).show();
   });
+
 
 // Hey, Delaine and Grant! This shit works!
 
@@ -245,7 +306,7 @@ function sortWeapons (classArg) {
     $(".monk-weapon").addClass("hide-selections")
     $(".conjurer-weapon").removeClass("hide-selections")
   }
-  if (classArg === "Conjurer") {
+  if (classArg === "Assassin") {
     $(".wizard-weapon").addClass("hide-selections")
     $(".warrior-weapon").addClass("hide-selections")
     $(".berserker-weapon").addClass("hide-selections")
@@ -259,7 +320,7 @@ function sortWeapons (classArg) {
     $(".conjurer-weapon").addClass("hide-selections")
     $(".assassin-weapon").removeClass("hide-selections")
   }
-  if (classArg === "Berseker") {
+  if (classArg === "Berserker") {
     $(".wizard-weapon").addClass("hide-selections")
     $(".warrior-weapon").addClass("hide-selections")
     $(".shaman-weapon").addClass("hide-selections")

@@ -107,3 +107,25 @@ body {
   padding: 0 50px 0 20px;
   border-radius: 0 5px 5px 0;
 }
+
+
+/* Battle Field */
+
+.battle {
+  height: 300px;
+}
+
+.attack {
+  position: relative;
+  background-color: #53A9CE;
+  box-shadow: 2px 2px 2px 5px #aaa;
+  border-radius: 3px;
+}
+
+#attackBtn {
+  position: absolute;
+  display: block;
+  top: 80%;
+  left: 25%;
+  z-index: 10;
+}
