@@ -43,7 +43,7 @@ $(document).ready(function() {
 
 //Creating User
   function createPlayer (){
-    user = new Gauntlet.Combatants.Player(getPlayerName())
+    user = new Gauntlet.Combatants.Player(_playerName)
     var chosenSpecies = new Gauntlet.Species[_speciesName]()
     var chosenClass = new Gauntlet.GuildHall[_className]()
     var chosenWeapon = new Gauntlet.Armory[_weaponName]()
@@ -93,7 +93,7 @@ $(document).ready(function() {
   }
 //End of creating enemy functions
 
-    function createEnemy() {
+  function createEnemy() {
     enemy = new Gauntlet.Combatants.Player(getEnemyName())
     var enemySpecies = new Gauntlet.Species[getEnemySpecies()]
     var enemyClass = new Gauntlet.GuildHall[getEnemyClass()]
