@@ -57,7 +57,37 @@ $(document).ready(function() {
     console.log(_className)
   }
 
-  function surpriseWeapon () {}
+  function surpriseWeapon () {
+    console.log("Finding random weapon")
+    if (_className === "Wizard" || _className === "Conjurer" || _className === "Sorcerer" || _className === "Shaman") {
+      _weaponName = "Staff"
+    }
+    if (_className === "Thief" || _className === "Ninja") {
+      playerWeaponOptions = ["Dagger", "Sword", "Bow", "CrossBow", "BrassKnuckles"]
+      _weaponName = playerWeaponOptions[Math.round(Math.random() * (playerWeaponOptions.length - 1))];
+    }
+    if (_className === "Assassin" || _className === "Archer") {
+      playerWeaponOptions = ["Dagger", "Bow", "CrossBow", "BrassKnuckles"]
+      _weaponName = playerWeaponOptions[Math.round(Math.random() * (playerWeaponOptions.length - 1))];
+    }
+    if (_className === "Valkyrie") {
+      playerWeaponOptions = ["Dagger", "Bow", "Sword", "LongSword", "CrossBow", "BrassKnuckles", "WarAxe", "WarHammer", "Mace"]
+      _weaponName = playerWeaponOptions[Math.round(Math.random() * (playerWeaponOptions.length - 1))];
+    }
+    if (_className === "Warrior") {
+      playerWeaponOptions = ["Dagger", "Sword", "LongSword", "WarAxe", "WarHammer", "Mace"]
+      _weaponName = playerWeaponOptions[Math.round(Math.random() * (playerWeaponOptions.length - 1))];
+    }
+    if (_className === "Monk") {
+      playerWeaponOptions = ["LongSword", "WarAxe", "WarHammer", "Mace", "BrassKnuckles"]
+      _weaponName = playerWeaponOptions[Math.round(Math.random() * (playerWeaponOptions.length - 1))];
+    }
+    if (_className === "Berserker") {
+      playerWeaponOptions = ["LongSword", "WarAxe", "WarHammer", "Mace"]
+      _weaponName = playerWeaponOptions[Math.round(Math.random() * (playerWeaponOptions.length - 1))];
+    }
+    console.log(_weaponName)
+  }
 
   // GRAB USER INPUTS / SELECTIONS AND CACHE THEM
 
