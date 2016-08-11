@@ -1,19 +1,14 @@
-/*
-  Test code to generate a human player and an orc player
- */
-
-
-/*
-  Test code to generate a spell
- */
-// var spell = new Gauntlet.SpellBook.Sphere();
-// console.log("spell: ", spell.toString());
-
 
 $(document).ready(function() {
+
+  // CACHE VARIABLES
+
   var _speciesName;
   var _className;
   var _weaponName;
+  var _playerName;
+
+  // EVENT LISTENERS
 
   var user;
   var enemy;
@@ -22,36 +17,33 @@ $(document).ready(function() {
   $(".species__link").on("click", getSpeciesName)
   $(".class__link").on("click", getClassName)
   $(".weapon__link").on("click", getWeaponName)
-  $(".battle").on("click", createPlayer)
-  $(".battle").on("click", createEnemy)
+  $(".doBattle").on("click", createPlayer)
+  $(".doBattle").on("click", createEnemy)
+
+  // GRAB USER INPUTS / SELECTIONS AND CACHE THEM
 
   function getPlayerName (e){
-    var playerName = $("#player-name").val()
-    console.log("player name ", playerName)
-    return playerName
+    _playerName = $("#player-name").val()
   }
 
   function getSpeciesName (e){
     _speciesName = e.currentTarget.id
     console.log("species Name", _speciesName)
-    // setSpeciesName(speciesName)
   }
 
   function getClassName (e) {
     _className = e.currentTarget.id
     console.log("class Name", _className)
-    // setClassName(className)
   }
 
   function getWeaponName (e) {
     _weaponName = e.currentTarget.id
     console.log("weapon Name", _weaponName)
-    // setWeaponName(weaponName)
   }
 
 //Creating User
   function createPlayer (){
-    user = new Gauntlet.Combatants.Player(getPlayerName()) //Get name dynamically from DOM
+    user = new Gauntlet.Combatants.Player(getPlayerName())
     var chosenSpecies = new Gauntlet.Species[_speciesName]()
     var chosenClass = new Gauntlet.GuildHall[_className]()
     var chosenWeapon = new Gauntlet.Armory[_weaponName]()
@@ -61,6 +53,8 @@ $(document).ready(function() {
     chosenSpecies.health += chosenClass.healthBonus
     chosenSpecies.strength += chosenClass.strengthBonus
     chosenSpecies.intelligence += chosenClass.intelligenceBonus
+    console.log("user info", user.toString())
+    $("#battlePlayerName").append(`<p> ${user.toString()} </p>`)
     // console.log("species name ", _speciesName)
     // console.log("class name ", _className)
     // console.log("weapon name ", _weaponName)
@@ -146,14 +140,20 @@ $(document).ready(function() {
     switch (nextCard) {
       case "card--species":
         moveAlong = ($("#player-name").val() !== "");
-        // thing.choice = selectedSpecies
-        //event.currentTarget.id
+        // console.log("switched to species")
         break;
       case "card--class":
         moveAlong = ($("#player-name").val() !== "");
+        // console.log("switched to class")
+        sortClasses(_speciesName)
         break;
       case "card--weapon":
         moveAlong = ($("#player-name").val() !== "");
+        // console.log("switched to weapons")
+        break;
+      case "card--battleground":
+        moveAlong = ($("#player-name").val() !== "");
+        // console.log("switched to battle")
         break;
     }
 
@@ -171,5 +171,34 @@ $(document).ready(function() {
     $(".card").hide();
     $("." + previousCard).show();
   });
+
+
+// Hey, Delaine and Grant! This shit works!
+
+function sortClasses (species) {
+  console.log(species)
+  if (species === "Human") {
+    $(".human-classes").removeClass("hide-selections")
+    $(".elf-classes").addClass("hide-selections")
+    $(".orc-classes").addClass("hide-selections")
+  }
+  if (species === "Elf") {
+    $(".elf-classes").removeClass("hide-selections")
+    $(".human-classes").addClass("hide-selections")
+    $(".orc-classes").addClass("hide-selections")
+  }
+  if (species === "Orc") {
+    $(".orc-classes").removeClass("hide-selections")
+    $(".elf-classes").addClass("hide-selections")
+    $(".human-classes").addClass("hide-selections")
+  }
+}
+
+function sortWeapons () {}
+
+//The functionality above should be applied to weapons as well
+//We just need to decide which weapons go to which classes and
+//I can flesh this out in the morning!
+
 
 });
