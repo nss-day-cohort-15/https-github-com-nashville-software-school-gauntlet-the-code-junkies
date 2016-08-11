@@ -42,13 +42,20 @@ $(document).ready(function() {
 
   function surpriseClass () {
     console.log("Finding random class")
-    playerClassOptions = ["Warrior", "Wizard", "Thief", "Monk", "Conjurer", "Assassin", "Valkyrie", "Sorcerer", "Archer", "Berserker", "Shaman", "Ninja"]
-    _className = playerClassOptions[Math.round(Math.random() * (playerClassOptions.length - 1))];
+    if (_speciesName === "Human") {
+      playerClassOptions = ["Warrior", "Wizard", "Thief", "Monk", "Conjurer", "Assassin"]
+      _className = playerClassOptions[Math.round(Math.random() * (playerClassOptions.length - 1))];
+    }
+    if (_speciesName === "Elf") {
+      playerClassOptions = ["Warrior", "Wizard", "Thief", "Valkyrie", "Sorcerer", "Archer"]
+      _className = playerClassOptions[Math.round(Math.random() * (playerClassOptions.length - 1))];
+    }
+    if (_speciesName === "Orc") {
+      playerClassOptions = ["Warrior", "Wizard", "Thief", "Berserker", "Shaman", "Ninja"]
+      _className = playerClassOptions[Math.round(Math.random() * (playerClassOptions.length - 1))];
+    }
     console.log(_className)
   }
-
-
-
 
   function surpriseWeapon () {}
 
