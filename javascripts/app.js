@@ -15,11 +15,15 @@ $(document).ready(function() {
   var _className;
   var _weaponName;
 
+  var user;
+  var enemy;
+
   $(".name").on("click", getPlayerName)
   $(".species__link").on("click", getSpeciesName)
   $(".class__link").on("click", getClassName)
   $(".weapon__link").on("click", getWeaponName)
   $(".battle").on("click", createPlayer)
+  $(".battle").on("click", createEnemy)
 
   function getPlayerName (e){
     var playerName = $("#player-name").val()
@@ -45,7 +49,31 @@ $(document).ready(function() {
     // setWeaponName(weaponName)
   }
 
-  // Functions to create random Enemy, May be Combined tomorrow, just getting base functionality
+//Creating User
+  function createPlayer (){
+    user = new Gauntlet.Combatants.Player(getPlayerName()) //Get name dynamically from DOM
+    var chosenSpecies = new Gauntlet.Species[_speciesName]()
+    var chosenClass = new Gauntlet.GuildHall[_className]()
+    var chosenWeapon = new Gauntlet.Armory[_weaponName]()
+    user.species = chosenSpecies
+    user.class = chosenClass
+    user.weapon = chosenWeapon
+    chosenSpecies.health += chosenClass.healthBonus
+    chosenSpecies.strength += chosenClass.strengthBonus
+    chosenSpecies.intelligence += chosenClass.intelligenceBonus
+    // console.log("species name ", _speciesName)
+    // console.log("class name ", _className)
+    // console.log("weapon name ", _weaponName)
+    // console.log("species intelligence", chosenSpecies.intelligence)
+    // console.log("chosen Species", chosenSpecies)
+    // console.log("chosen class", chosenClass)
+    // console.log("chosen weapon", chosenWeapon)
+    console.log("User so far", user)
+    return user
+    }
+
+
+    // Functions to create random Enemy, May be Combined tomorrow, just getting base functionality
   function getEnemyName () {
     var enemyNamesOptions = ["Some guy off the street", "The town Drunk", "Insane Asylum escapee", "Yo Momma", "Grant", "Delaine", "Casey", "Sscotth"];
     var enemyName = enemyNamesOptions[Math.round(Math.random() * (enemyNamesOptions.length - 1))];
@@ -75,28 +103,8 @@ $(document).ready(function() {
   }
 //End of creating enemy functions
 
-//Creating User and Enemy
-  function createPlayer (){
-    var user = new Gauntlet.Combatants.Player(getPlayerName()) //Get name dynamically from DOM
-    var chosenSpecies = new Gauntlet.Species[_speciesName]()
-    var chosenClass = new Gauntlet.GuildHall[_className]()
-    var chosenWeapon = new Gauntlet.Armory[_weaponName]()
-    user.species = chosenSpecies
-    user.class = chosenClass
-    user.weapon = chosenWeapon
-    chosenSpecies.health += chosenClass.healthBonus
-    chosenSpecies.strength += chosenClass.strengthBonus
-    chosenSpecies.intelligence += chosenClass.intelligenceBonus
-    // console.log("species name ", _speciesName)
-    // console.log("class name ", _className)
-    // console.log("weapon name ", _weaponName)
-    // console.log("species intelligence", chosenSpecies.intelligence)
-    // console.log("chosen Species", chosenSpecies)
-    // console.log("chosen class", chosenClass)
-    // console.log("chosen weapon", chosenWeapon)
-    console.log("User so far", user)
-
-    var enemy = new Gauntlet.Combatants.Player(getEnemyName())
+    function createEnemy() {
+    enemy = new Gauntlet.Combatants.Player(getEnemyName())
     var enemySpecies = new Gauntlet.Species[getEnemySpecies()]
     var enemyClass = new Gauntlet.GuildHall[getEnemyClass()]
     var enemyWeapon = new Gauntlet.Armory[getEnemyWeapon()]
@@ -107,6 +115,19 @@ $(document).ready(function() {
     enemySpecies.strength += enemyClass.strengthBonus
     enemySpecies.intelligence += enemyClass.intelligenceBonus
     console.log("Random Enemy", enemy)
+    console.log("enemy damage", enemy.weapon.damage, "enemy strength", enemy.species.strength);
+    return enemy
+  }
+
+  $("#enemyAttack").on("click", attackTheUser)
+  $("#userAttack").on("click", attackTheEnemy)
+
+  function attackTheUser () {
+    enemy.attack(user);
+  }
+
+  function attackTheEnemy () {
+    user.attack(enemy);
   }
 
   /*
@@ -119,7 +140,6 @@ $(document).ready(function() {
     move on to the next view.
    */
   $(".card__link").click(function(e) {
-    console.log("clicked", this)
     var nextCard = $(this).attr("next");
     var moveAlong = false;
 

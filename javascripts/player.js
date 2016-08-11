@@ -15,23 +15,30 @@ var Gauntlet = (function(gauntlet) {
     this.strength = null;
     this.intelligence = null;
 
-    this.toString = function() {
-      var output = [this.playerName,
-        ": a ",
-        this.skinColor,
-        " skinned ",
-        this.species,
-        " ",
-        this.class,
-        " with ",
-        this.health,
-        " health. ",
-        (this.class.magical) ? "Able to cast " : " Wielding a ",
-        this.weapon.toString(),
-        "!"
-      ].join("");
-      return output;
-    };
+    this.attack = function(target) {
+      var damage = this.species.strength + this.weapon.damage;
+      target.species.health -= damage;
+      console.log(target)
+      return target
+    }
+
+    // this.toString = function() {
+    //   var output = [this.playerName,
+    //     ": a ",
+    //     this.skinColor,
+    //     " skinned ",
+    //     this.species,
+    //     " ",
+    //     this.class,
+    //     " with ",
+    //     this.health,
+    //     " health. ",
+    //     (this.class.magical) ? "Able to cast " : " Wielding a ",
+    //     this.weapon.toString(),
+    //     "!"
+    //   ].join("");
+    //   return output;
+    // };
   };
 
 
