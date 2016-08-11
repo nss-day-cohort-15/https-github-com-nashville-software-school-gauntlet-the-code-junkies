@@ -223,6 +223,8 @@ $(document).ready(function() {
   $('[data-toggle="popover"]').popover()
   $(".btn--blue").on("mouseenter", showPopover)
   $(".btn--blue").on("mouseleave", hidePopover)
+  $(".select").on("click", createSelectedItem)
+
 
   function showPopover(e){
     $(e.currentTarget).popover('show')
@@ -230,6 +232,12 @@ $(document).ready(function() {
 
   function hidePopover(e){
     $(e.currentTarget).popover('hide')
+  }
+
+  function createSelectedItem (e){
+    console.log("event", e)
+    $(".btn").removeClass("selectedItem")
+    $(e.currentTarget).addClass("selectedItem")
   }
   /*
     Show the initial view that accepts player name
