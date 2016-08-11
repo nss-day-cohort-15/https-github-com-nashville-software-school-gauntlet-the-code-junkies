@@ -135,20 +135,21 @@ $(document).ready(function() {
     switch (nextCard) {
       case "card--species":
         moveAlong = ($("#player-name").val() !== "");
-        // console.log("switched to species")
+        console.log("switched to species")
         break;
       case "card--class":
         moveAlong = ($("#player-name").val() !== "");
-        // console.log("switched to class")
+        console.log("switched to class")
         sortClasses(_speciesName)
         break;
       case "card--weapon":
         moveAlong = ($("#player-name").val() !== "");
-        // console.log("switched to weapons")
+        console.log("switched to weapons")
+        sortWeapons(_className)
         break;
       case "card--battleground":
         moveAlong = ($("#player-name").val() !== "");
-        // console.log("switched to battle")
+        console.log("switched to battle")
         break;
     }
 
@@ -189,11 +190,179 @@ function sortClasses (species) {
   }
 }
 
-function sortWeapons () {}
-
-//The functionality above should be applied to weapons as well
-//We just need to decide which weapons go to which classes and
-//I can flesh this out in the morning!
+function sortWeapons (classArg) {
+  console.log("sortWeapons working")
+  console.log(classArg)
+  if (classArg === "Warrior") {
+    console.log("you picked warrior")
+    $(".wizard-weapon").addClass("hide-selections")
+    $(".thief-weapon").addClass("hide-selections")
+    $(".valkyrie-weapon").addClass("hide-selections")
+    $(".sorcerer-weapon").addClass("hide-selections")
+    $(".archer-weapon").addClass("hide-selections")
+    $(".monk-weapon").addClass("hide-selections")
+    $(".conjurer-weapon").addClass("hide-selections")
+    $(".assassin-weapon").addClass("hide-selections")
+    $(".berserker-weapon").addClass("hide-selections")
+    $(".shaman-weapon").addClass("hide-selections")
+    $(".ninja-weapon").addClass("hide-selections")
+    $(".warrior-weapon").removeClass("hide-selections")
+  }
+  if (classArg === "Wizard") {
+    $(".warrior-weapon").addClass("hide-selections")
+    $(".thief-weapon").addClass("hide-selections")
+    $(".valkyrie-weapon").addClass("hide-selections")
+    $(".sorcerer-weapon").addClass("hide-selections")
+    $(".archer-weapon").addClass("hide-selections")
+    $(".monk-weapon").addClass("hide-selections")
+    $(".conjurer-weapon").addClass("hide-selections")
+    $(".assassin-weapon").addClass("hide-selections")
+    $(".berserker-weapon").addClass("hide-selections")
+    $(".shaman-weapon").addClass("hide-selections")
+    $(".ninja-weapon").addClass("hide-selections")
+    $(".wizard-weapon").removeClass("hide-selections")
+  }
+  if (classArg === "Thief") {
+    $(".wizard-weapon").addClass("hide-selections")
+    $(".warrior-weapon").addClass("hide-selections")
+    $(".valkyrie-weapon").addClass("hide-selections")
+    $(".sorcerer-weapon").addClass("hide-selections")
+    $(".archer-weapon").addClass("hide-selections")
+    $(".monk-weapon").addClass("hide-selections")
+    $(".conjurer-weapon").addClass("hide-selections")
+    $(".assassin-weapon").addClass("hide-selections")
+    $(".berserker-weapon").addClass("hide-selections")
+    $(".shaman-weapon").addClass("hide-selections")
+    $(".ninja-weapon").addClass("hide-selections")
+    $(".thief-weapon").removeClass("hide-selections")
+  }
+  if (classArg === "Valkyrie") {
+    $(".wizard-weapon").addClass("hide-selections")
+    $(".warrior-weapon").addClass("hide-selections")
+    $(".sorcerer-weapon").addClass("hide-selections")
+    $(".archer-weapon").addClass("hide-selections")
+    $(".monk-weapon").addClass("hide-selections")
+    $(".conjurer-weapon").addClass("hide-selections")
+    $(".assassin-weapon").addClass("hide-selections")
+    $(".berserker-weapon").addClass("hide-selections")
+    $(".shaman-weapon").addClass("hide-selections")
+    $(".ninja-weapon").addClass("hide-selections")
+    $(".thief-weapon").addClass("hide-selections")
+    $(".valkyrie-weapon").removeClass("hide-selections")
+  }
+  if (classArg === "Sorcerer") {
+    $(".wizard-weapon").addClass("hide-selections")
+    $(".warrior-weapon").addClass("hide-selections")
+    $(".archer-weapon").addClass("hide-selections")
+    $(".monk-weapon").addClass("hide-selections")
+    $(".conjurer-weapon").addClass("hide-selections")
+    $(".assassin-weapon").addClass("hide-selections")
+    $(".berserker-weapon").addClass("hide-selections")
+    $(".shaman-weapon").addClass("hide-selections")
+    $(".ninja-weapon").addClass("hide-selections")
+    $(".thief-weapon").addClass("hide-selections")
+    $(".valkyrie-weapon").addClass("hide-selections")
+    $(".sorcerer-weapon").removeClass("hide-selections")
+  }
+  if (classArg === "Archer") {
+    $(".wizard-weapon").addClass("hide-selections")
+    $(".warrior-weapon").addClass("hide-selections")
+    $(".monk-weapon").addClass("hide-selections")
+    $(".conjurer-weapon").addClass("hide-selections")
+    $(".assassin-weapon").addClass("hide-selections")
+    $(".berserker-weapon").addClass("hide-selections")
+    $(".shaman-weapon").addClass("hide-selections")
+    $(".ninja-weapon").addClass("hide-selections")
+    $(".thief-weapon").addClass("hide-selections")
+    $(".valkyrie-weapon").addClass("hide-selections")
+    $(".sorcerer-weapon").addClass("hide-selections")
+    $(".archer-weapon").removeClass("hide-selections")
+  }
+  if (classArg === "Monk") {
+    $(".wizard-weapon").addClass("hide-selections")
+    $(".warrior-weapon").addClass("hide-selections")
+    $(".conjurer-weapon").addClass("hide-selections")
+    $(".assassin-weapon").addClass("hide-selections")
+    $(".berserker-weapon").addClass("hide-selections")
+    $(".shaman-weapon").addClass("hide-selections")
+    $(".ninja-weapon").addClass("hide-selections")
+    $(".thief-weapon").addClass("hide-selections")
+    $(".valkyrie-weapon").addClass("hide-selections")
+    $(".sorcerer-weapon").addClass("hide-selections")
+    $(".archer-weapon").addClass("hide-selections")
+    $(".monk-weapon").removeClass("hide-selections")
+  }
+  if (classArg === "Conjurer") {
+    $(".wizard-weapon").addClass("hide-selections")
+    $(".warrior-weapon").addClass("hide-selections")
+    $(".assassin-weapon").addClass("hide-selections")
+    $(".berserker-weapon").addClass("hide-selections")
+    $(".shaman-weapon").addClass("hide-selections")
+    $(".ninja-weapon").addClass("hide-selections")
+    $(".thief-weapon").addClass("hide-selections")
+    $(".valkyrie-weapon").addClass("hide-selections")
+    $(".sorcerer-weapon").addClass("hide-selections")
+    $(".archer-weapon").addClass("hide-selections")
+    $(".monk-weapon").addClass("hide-selections")
+    $(".conjurer-weapon").removeClass("hide-selections")
+  }
+  if (classArg === "Assassin") {
+    $(".wizard-weapon").addClass("hide-selections")
+    $(".warrior-weapon").addClass("hide-selections")
+    $(".berserker-weapon").addClass("hide-selections")
+    $(".shaman-weapon").addClass("hide-selections")
+    $(".ninja-weapon").addClass("hide-selections")
+    $(".thief-weapon").addClass("hide-selections")
+    $(".valkyrie-weapon").addClass("hide-selections")
+    $(".sorcerer-weapon").addClass("hide-selections")
+    $(".archer-weapon").addClass("hide-selections")
+    $(".monk-weapon").addClass("hide-selections")
+    $(".conjurer-weapon").addClass("hide-selections")
+    $(".assassin-weapon").removeClass("hide-selections")
+  }
+  if (classArg === "Berserker") {
+    $(".wizard-weapon").addClass("hide-selections")
+    $(".warrior-weapon").addClass("hide-selections")
+    $(".shaman-weapon").addClass("hide-selections")
+    $(".ninja-weapon").addClass("hide-selections")
+    $(".thief-weapon").addClass("hide-selections")
+    $(".valkyrie-weapon").addClass("hide-selections")
+    $(".sorcerer-weapon").addClass("hide-selections")
+    $(".archer-weapon").addClass("hide-selections")
+    $(".monk-weapon").addClass("hide-selections")
+    $(".conjurer-weapon").addClass("hide-selections")
+    $(".assassin-weapon").addClass("hide-selections")
+    $(".berserker-weapon").removeClass("hide-selections")
+  }
+  if (classArg === "Shaman") {
+    $(".wizard-weapon").addClass("hide-selections")
+    $(".warrior-weapon").addClass("hide-selections")
+    $(".ninja-weapon").addClass("hide-selections")
+    $(".thief-weapon").addClass("hide-selections")
+    $(".valkyrie-weapon").addClass("hide-selections")
+    $(".sorcerer-weapon").addClass("hide-selections")
+    $(".archer-weapon").addClass("hide-selections")
+    $(".monk-weapon").addClass("hide-selections")
+    $(".conjurer-weapon").addClass("hide-selections")
+    $(".assassin-weapon").addClass("hide-selections")
+    $(".berserker-weapon").addClass("hide-selections")
+    $(".shaman-weapon").removeClass("hide-selections")
+  }
+  if (classArg === "Ninja") {
+    $(".wizard-weapon").addClass("hide-selections")
+    $(".warrior-weapon").addClass("hide-selections")
+    $(".thief-weapon").addClass("hide-selections")
+    $(".valkyrie-weapon").addClass("hide-selections")
+    $(".sorcerer-weapon").addClass("hide-selections")
+    $(".archer-weapon").addClass("hide-selections")
+    $(".monk-weapon").addClass("hide-selections")
+    $(".conjurer-weapon").addClass("hide-selections")
+    $(".assassin-weapon").addClass("hide-selections")
+    $(".berserker-weapon").addClass("hide-selections")
+    $(".shaman-weapon").addClass("hide-selections")
+    $(".ninja-weapon").removeClass("hide-selections")
+  }
+}
 
 
 });
