@@ -293,6 +293,7 @@ $(document).ready(function() {
     $(".enemyWins").addClass("hide-selections");
     $("#battleEnemyName").html("");
     user.species.health = userHealth;
+    $("#enemyImage").html("");
     createEnemy();
     updateStats()
   }
