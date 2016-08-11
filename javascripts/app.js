@@ -3,12 +3,14 @@ $(document).ready(function() {
 
   // CACHE VARIABLES
 
+
   var _speciesName;
   var _className;
   var _weaponName;
   var _playerName;
   var userSpell;
   var chosenSpellName;
+
 
   // EVENT LISTENERS
 
@@ -50,6 +52,9 @@ $(document).ready(function() {
 
 //Creating User
   function createPlayer (){
+    if (_weaponName === null) {
+      alert("Pick a weapon")
+    }
     user = new Gauntlet.Combatants.Player(_playerName)
     var chosenSpecies = new Gauntlet.Species[_speciesName]()
     var chosenClass = new Gauntlet.GuildHall[_className]()
@@ -189,20 +194,34 @@ $(document).ready(function() {
 
     switch (nextCard) {
       case "card--species":
+        if ($("#player-name").val() === "") {
+          alert("Pick a name")
+          break
+        }
         moveAlong = ($("#player-name").val() !== "");
         console.log("switched to species")
         break;
       case "card--class":
+        if (_speciesName === null) {
+          alert("Pick a species")
+          break
+        }
         moveAlong = ($("#player-name").val() !== "");
         console.log("switched to class")
         sortClasses(_speciesName)
         break;
       case "card--weapon":
+        if (_className === null) {
+          alert("Pick a class")
+          break
+        }
         moveAlong = ($("#player-name").val() !== "");
         console.log("switched to weapons")
         sortWeapons(_className)
         break;
       case "card--battleground":
+        // WEAPON NAME error handling is dealt with
+        // within createPlayer
         moveAlong = ($("#player-name").val() !== "");
         console.log("switched to battle")
         sortAttacks(_weaponName)
