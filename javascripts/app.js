@@ -55,6 +55,7 @@ $(document).ready(function() {
     chosenSpecies.intelligence += chosenClass.intelligenceBonus
     console.log("user info", user.toString())
     $("#battlePlayerName").append(`<p> ${user.toString()} </p>`)
+    printStats(user, "user")
     // console.log("species name ", _speciesName)
     // console.log("class name ", _className)
     // console.log("weapon name ", _weaponName)
@@ -105,11 +106,13 @@ $(document).ready(function() {
     enemySpecies.strength += enemyClass.strengthBonus
     enemySpecies.intelligence += enemyClass.intelligenceBonus
     console.log("Random Enemy", enemy)
+    enemyName(enemy)
+    printStats(enemy, "enemy")
     return enemy
   }
 
-  $("#enemyAttack").on("click", attackTheUser)
-  $("#userAttack").on("click", attackTheEnemy)
+  // $("#enemyAttack").on("click", attackTheUser)
+  $("#userAttack").on("click", battleFieldAttack)
 
   function attackTheUser () {
     enemy.attack(user);
@@ -119,6 +122,37 @@ $(document).ready(function() {
     user.attack(enemy);
   }
 
+  function battleFieldAttack () {
+    user.attack(enemy)
+    enemy.attack(user)
+    updateStats()
+  }
+
+  function enemyName (enemy){
+      var output = [ "<strong>", enemy.playerName, ": </strong>",
+      "<small>", enemy.species.speciesName, enemy.class,
+        (enemy.class.magical) ? "Able to cast " : " Wielding a ",
+        enemy.weapon.toString(),
+        "!</small>"
+      ].join(" ");
+      $("#battleEnemyName").append(output);
+  }
+
+  // Print Stats to the DOM
+  function printStats (player, name){
+    $(`.${name}`).html("")
+    $(`.${name}`).append(`<h3><strong>HEALTH:</strong> <small>${player.species.health}</small><h3>`)
+    if (user.species.isMagical) {
+      $(`.${name}`).append(`<h3><strong>INTELLIGENCE:</strong> <small>${player.species.intelligence}<small></h3>`)
+    } else {
+      $(`.${name}`).append(`<h3><strong>STRENGTH:<strong> <small>${player.species.strength}</small></h3>`)
+    }
+  }
+
+  function updateStats (){
+    printStats(user, "user")
+    printStats(enemy, "enemy")
+  }
   /*
     Show the initial view that accepts player name
    */
