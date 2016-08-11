@@ -324,13 +324,44 @@
       </div>
 
       <div class="card__button">
-        <a class="card__link btn btn--big btn--orange battle"
+        <a class="card__link btn btn--big btn--orange doBattle"
            href="#"
            next="card--battleground">
           <span class="btn__prompt">></span>
           <span class="btn__text">defeat your enemies</span>
         </a>
       </div>
+    </section>
+
+    <!-- Battle Field -->
+
+    <section id="battle-field" class="card card--battleground">
+      <!-- <div class="card__prompt"> -->
+      <div>Battle!</div>
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="battle">
+                  <span id="battlePlayerName"> </span>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="battle attack">
+                <button id="attackBtn"> Attack! </button>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="battle">
+                  <span class="battleEnemy">Enemy</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
     </section>
 
     <section id="battleground" class="card card--battleground"></section>
