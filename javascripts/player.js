@@ -18,8 +18,6 @@ var Gauntlet = (function(gauntlet) {
     this.toString = function() {
       var output = [this.playerName,
         ": a ",
-        this.skinColor,
-        " skinned ",
         this.species,
         " ",
         this.class,

@@ -6,6 +6,7 @@ $(document).ready(function() {
   var _speciesName;
   var _className;
   var _weaponName;
+  var _playerName;
 
   // EVENT LISTENERS
 
@@ -13,36 +14,31 @@ $(document).ready(function() {
   $(".species__link").on("click", getSpeciesName)
   $(".class__link").on("click", getClassName)
   $(".weapon__link").on("click", getWeaponName)
-  $(".battle").on("click", createPlayer)
+  $(".doBattle").on("click", createPlayer)
 
   // GRAB USER INPUTS / SELECTIONS AND CACHE THEM
 
   function getPlayerName (e){
-    var playerName = $("#player-name").val()
-    console.log("player name ", playerName)
-    return playerName
+    _playerName = $("#player-name").val()
   }
 
   function getSpeciesName (e){
     _speciesName = e.currentTarget.id
     console.log("species Name", _speciesName)
-    // setSpeciesName(speciesName)
   }
 
   function getClassName (e) {
     _className = e.currentTarget.id
     console.log("class Name", _className)
-    // setClassName(className)
   }
 
   function getWeaponName (e) {
     _weaponName = e.currentTarget.id
     console.log("weapon Name", _weaponName)
-    // setWeaponName(weaponName)
   }
 
   function createPlayer (){
-    var user = new Gauntlet.Combatants.Player(getPlayerName()) //Get name dynamically from DOM
+    var user = new Gauntlet.Combatants.Player(_playerName)
     var chosenSpecies = new Gauntlet.Species[_speciesName]()
     var chosenClass = new Gauntlet.GuildHall[_className]()
     var chosenWeapon = new Gauntlet.Armory[_weaponName]()
@@ -52,6 +48,8 @@ $(document).ready(function() {
     chosenSpecies.health += chosenClass.healthBonus
     chosenSpecies.strength += chosenClass.strengthBonus
     chosenSpecies.intelligence += chosenClass.intelligenceBonus
+    console.log("user info", user.toString())
+    $("#battlePlayerName").append(`<p> ${user.toString()} </p>`)
     // console.log("species name ", _speciesName)
     // console.log("class name ", _className)
     // console.log("weapon name ", _weaponName)
@@ -79,16 +77,20 @@ $(document).ready(function() {
     switch (nextCard) {
       case "card--species":
         moveAlong = ($("#player-name").val() !== "");
-        console.log("switched to species")
+        // console.log("switched to species")
         break;
       case "card--class":
         moveAlong = ($("#player-name").val() !== "");
-        console.log("switched to class")
+        // console.log("switched to class")
         sortClasses(_speciesName)
         break;
       case "card--weapon":
         moveAlong = ($("#player-name").val() !== "");
-        console.log("switched to weapons")
+        // console.log("switched to weapons")
+        break;
+      case "card--battleground":
+        moveAlong = ($("#player-name").val() !== "");
+        // console.log("switched to battle")
         break;
     }
 
