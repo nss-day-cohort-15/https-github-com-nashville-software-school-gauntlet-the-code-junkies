@@ -89,6 +89,7 @@ $(document).ready(function() {
       case "card--weapon":
         moveAlong = ($("#player-name").val() !== "");
         console.log("switched to weapons")
+        sortWeapons(_className)
         break;
     }
 
@@ -128,7 +129,17 @@ function sortClasses (species) {
   }
 }
 
-function sortWeapons () {}
+function sortWeapons (classArg) {
+  console.log("sortWeapons working")
+  console.log(classArg)
+  if (classArg === "Warrior") {
+    console.log("you picked warrior")
+    $(".warrior-weapon").removeClass("hide-selections")
+  }
+  if (classArg === "Wizard") {
+  $(".wizard-weapon").removeClass("hide-selections")
+  }
+}
 
 //The functionality above should be applied to weapons as well
 //We just need to decide which weapons go to which classes and
