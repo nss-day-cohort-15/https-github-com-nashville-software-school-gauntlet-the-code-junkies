@@ -211,13 +211,28 @@ $(document).ready(function() {
     if (user.species.health <= 0 && user.species.health < enemy.species.health) {
       console.log("Enemy Wins!")
       $(".enemyWins").removeClass("hide-selections")
-      $(".message").append(`<h1> Game Over... </h1> <p> You were defeated by ${enemy.playerName}. </p> <p> Your health: ${user.species.health} </p> <p> Enemy health: ${enemy.species.health} </p> <p> Better luck next time! </p>`)
+      $(".message").append(`<h1> Game Over... </h1> <p> You were defeated by ${enemy.playerName}. </p> <p> Your health: ${user.species.health} </p> <p> Enemy health: ${enemy.species.health} </p> <p> Better luck next time! </p> <button class="restartGame">Restart Game</button>`)
+      $(".restartGame").on("click", restartGame)
     }
     if (enemy.species.health <=0 && enemy.species.health < user.species.health) {
       console.log("You win!")
       $(".userWins").removeClass("hide-selections")
-      $(".message").append(`<h1> You won!! </h1> <p> You defeated ${enemy.playerName}. </p> <p> Your health: ${user.species.health} </p> <p> Enemy health: ${enemy.species.health} </p> <p> Good work fighter! </p> `)
+      $(".message").append(`<h1> You won!! </h1> <p> You defeated ${enemy.playerName}. </p> <p> Your health: ${user.species.health} </p> <p> Enemy health: ${enemy.species.health} </p> <p> Good work fighter! </p> <button class="restartGame">Restart Game</button>`)
+      $(".restartGame").on("click", restartGame)
     }
+  }
+
+// Restart Buttons and Fight Again buttons !!!
+
+
+  function restartGame () {
+    location.reload()
+    // $(".message").html("");
+    // $("#battle-field").html("");
+    // $(".userWins").addClass("hide-selections");
+    // $(".enemyWins").addClass("hide-selections")
+    // $("#player-setup").show();
+
   }
 
   $('[data-toggle="popover"]').popover()
