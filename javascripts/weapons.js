@@ -45,9 +45,15 @@ var Gauntlet = (function(gauntlet){
     };
     gauntlet.Armory.BroadSword.prototype = new gauntlet.Armory.Weapon();
 
+     gauntlet.Armory.WarAxe = function() {
+      this.name = "war axe";
+      this.damage = 22;
+    };
+    gauntlet.Armory.WarAxe.prototype = new gauntlet.Armory.Weapon();
+
     gauntlet.Armory.WarHammer = function() {
       this.name = "war hammer";
-      this.damage = 22;
+      this.damage = 24;
     };
     gauntlet.Armory.WarHammer.prototype = new gauntlet.Armory.Weapon();
 

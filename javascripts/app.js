@@ -10,11 +10,15 @@ $(document).ready(function() {
 
   // EVENT LISTENERS
 
+  var user;
+  var enemy;
+
   $(".name").on("click", getPlayerName)
   $(".species__link").on("click", getSpeciesName)
   $(".class__link").on("click", getClassName)
   $(".weapon__link").on("click", getWeaponName)
   $(".doBattle").on("click", createPlayer)
+  $(".doBattle").on("click", createEnemy)
 
   // GRAB USER INPUTS / SELECTIONS AND CACHE THEM
 
@@ -37,8 +41,9 @@ $(document).ready(function() {
     console.log("weapon Name", _weaponName)
   }
 
+//Creating User
   function createPlayer (){
-    var user = new Gauntlet.Combatants.Player(_playerName)
+    user = new Gauntlet.Combatants.Player(getPlayerName())
     var chosenSpecies = new Gauntlet.Species[_speciesName]()
     var chosenClass = new Gauntlet.GuildHall[_className]()
     var chosenWeapon = new Gauntlet.Armory[_weaponName]()
@@ -58,6 +63,60 @@ $(document).ready(function() {
     // console.log("chosen class", chosenClass)
     // console.log("chosen weapon", chosenWeapon)
     console.log("User so far", user)
+    return user
+    }
+
+
+    // Functions to create random Enemy, May be Combined tomorrow, just getting base functionality
+  function getEnemyName () {
+    var enemyNamesOptions = ["Some guy off the street", "The town Drunk", "Insane Asylum escapee", "Yo Momma", "Grant", "Delaine", "Casey", "Sscotth"];
+    var enemyName = enemyNamesOptions[Math.round(Math.random() * (enemyNamesOptions.length - 1))];
+    return enemyName
+  }
+
+  function getEnemySpecies() {
+    var enemySpeciesOptions = ["Human", "Elf", "Orc"];
+    var enemySpecies = enemySpeciesOptions[Math.round(Math.random() * (enemySpeciesOptions.length - 1))];
+    return enemySpecies
+  }
+
+  function getEnemyClass() {
+    var enemyClassOptions = ["Warrior", "Valkyrie", "Berserker", "Monk", "Thief", "Ninja", "Assassin", "Archer"];
+    var enemyClass = enemyClassOptions[Math.round(Math.random() * (enemyClassOptions.length - 1))];
+    return enemyClass
+  }
+
+  function getEnemyWeapon () {
+    var enemyWeaponOptions = ["BrassKnuckles", "Sword", "Mace", "Dagger", "BroadSword", "WarHammer", "CrossBow", "Bow"];
+    var enemyWeapon = enemyWeaponOptions[Math.round(Math.random() * (enemyWeaponOptions.length - 1))];
+    return enemyWeapon
+  }
+//End of creating enemy functions
+
+    function createEnemy() {
+    enemy = new Gauntlet.Combatants.Player(getEnemyName())
+    var enemySpecies = new Gauntlet.Species[getEnemySpecies()]
+    var enemyClass = new Gauntlet.GuildHall[getEnemyClass()]
+    var enemyWeapon = new Gauntlet.Armory[getEnemyWeapon()]
+    enemy.species = enemySpecies
+    enemy.class = enemyClass
+    enemy.weapon = enemyWeapon
+    enemySpecies.health += enemyClass.healthBonus
+    enemySpecies.strength += enemyClass.strengthBonus
+    enemySpecies.intelligence += enemyClass.intelligenceBonus
+    console.log("Random Enemy", enemy)
+    return enemy
+  }
+
+  $("#enemyAttack").on("click", attackTheUser)
+  $("#userAttack").on("click", attackTheEnemy)
+
+  function attackTheUser () {
+    enemy.attack(user);
+  }
+
+  function attackTheEnemy () {
+    user.attack(enemy);
   }
 
   /*
@@ -70,7 +129,6 @@ $(document).ready(function() {
     move on to the next view.
    */
   $(".card__link").click(function(e) {
-    console.log("clicked", this)
     var nextCard = $(this).attr("next");
     var moveAlong = false;
 
@@ -108,6 +166,7 @@ $(document).ready(function() {
     $(".card").hide();
     $("." + previousCard).show();
   });
+
 
 // Hey, Delaine and Grant! This shit works!
 

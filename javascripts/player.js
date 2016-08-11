@@ -15,6 +15,14 @@ var Gauntlet = (function(gauntlet) {
     this.strength = null;
     this.intelligence = null;
 
+    this.attack = function(target) {
+      var damage = this.species.strength + this.weapon.damage;
+      target.species.health -= damage;
+      console.log(target)
+      return target
+    }
+
+
     this.toString = function() {
       var output = [this.playerName,
         ": a ",
@@ -30,36 +38,6 @@ var Gauntlet = (function(gauntlet) {
       ].join("");
       return output;
     };
-  };
-
-
-  // var warrior = new Gauntlet.Species.Human();
-  // warrior.setWeapon(new WarAxe());
-  // warrior.generateClass();  // This will be used for "Surprise me" option
-  // console.log(warrior.toString());
-
-  // var orc = new Gauntlet.Combatants.Orc();
-  // orc.generateClass();
-  // orc.setWeapon(new BroadSword());
-  // console.log(orc.toString());
-
-  gauntlet.Combatants.Player.prototype.setWeapon = function(newWeapon) {
-    this.weapon = newWeapon;
-  }
-
-  gauntlet.Combatants.Player.prototype.generateClass = function() {
-    // Get a random index from the allowed classes array
-    var random = Math.round(Math.random() * (this.allowedClasses.length - 1));
-
-    // Get the string at the index
-    var randomClass = this.allowedClasses[random];
-
-    // Composes the corresponding player class into the player object
-    this.class = new gauntlet.GuildHall[randomClass]();
-
-    // Add the health bonus
-    this.health += this.class.healthBonus;
-    return this.class;
   };
 
 
