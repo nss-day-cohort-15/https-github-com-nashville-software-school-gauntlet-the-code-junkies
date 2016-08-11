@@ -124,7 +124,7 @@ $(document).ready(function() {
   }
 
   function enemyName (enemy){
-      var output = [ "<strong>", enemy.playerName, ": </strong>",
+      var output = [ "<strong>", enemy.playerName.toUpperCase(), ": </strong>",
       "<small>", enemy.species.speciesName, enemy.class,
         (enemy.class.magical) ? "Able to cast " : " Wielding a ",
         enemy.weapon.toString(),
