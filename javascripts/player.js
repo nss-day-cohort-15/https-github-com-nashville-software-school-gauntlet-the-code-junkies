@@ -10,6 +10,8 @@ var Gauntlet = (function(gauntlet) {
     this.class = null;
     this.weapon = null;
 
+    this.chosenSpell = null;
+
     this.playerName = name || "unknown adventurer";
     this.health = null;
     this.strength = null;
@@ -23,15 +25,10 @@ var Gauntlet = (function(gauntlet) {
     }
 
     this.castSpell = function(target) {
-      var fireBall = new Gauntlet.SpellBook.FireBall;
-      // console.log(fireBall)
-      var damage = this.species.intelligence + fireBall.damage
+      var damage = (this.species.intelligence * 2) + this.chosenSpell.damage
       target.species.health -= damage;
-      console.log(target)
       return target
     }
-
-
 
     this.toString = function() {
       var output = ["<strong>", this.playerName.toUpperCase(),  "</strong>",

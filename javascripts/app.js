@@ -3,10 +3,14 @@ $(document).ready(function() {
 
   // CACHE VARIABLES
 
-  var _speciesName = null;
-  var _className = null;
-  var _weaponName = null;
-  var _playerName = null;
+
+  var _speciesName;
+  var _className;
+  var _weaponName;
+  var _playerName;
+  var userSpell;
+  var chosenSpellName;
+
 
   // EVENT LISTENERS
 
@@ -39,6 +43,11 @@ $(document).ready(function() {
   function getWeaponName (e) {
     _weaponName = e.currentTarget.id
     console.log("weapon Name", _weaponName)
+  }
+
+  function getChosenSpellName () {
+    chosenSpellName = $("#magicSpellSelect option:selected").val();
+    console.log(chosenSpellName)
   }
 
 //Creating User
@@ -119,11 +128,17 @@ $(document).ready(function() {
   }
 
   function userCastSpell () {
+    getChosenSpellName();
+    userSpell =  new Gauntlet.SpellBook[chosenSpellName]();
+    user.chosenSpell = userSpell;
+
     user.castSpell(enemy);
     updateStats()
     enemy.attack(user)
     checkHealth()
-    console.log("Enemy Health", enemy.species.health)
+    console.log("Enemy Health", enemy.species.health);
+    console.log(user, enemy);
+    updateStats()
   }
 
   function enemyName (enemy){
