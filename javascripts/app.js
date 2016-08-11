@@ -104,18 +104,14 @@ $(document).ready(function() {
     return enemy
   }
 
-  $("#enemyAttack").on("click", attackTheUser)
-  $("#userAttack").on("click", attackTheEnemy)
+  $("#userAttack").on("click", battleFieldAttack)
   $("#magicAttack").on("click", userCastSpell)
 
-  function attackTheUser () {
+  function battleFieldAttack () {
     enemy.attack(user);
-    console.log("Your health", user.species.health)
-  }
-
-  function attackTheEnemy () {
     user.attack(enemy);
-    console.log("Enemy Health", enemy.species.health)
+    updateStats()
+    console.log("Your health", user.species.health)
   }
 
   function userCastSpell () {
