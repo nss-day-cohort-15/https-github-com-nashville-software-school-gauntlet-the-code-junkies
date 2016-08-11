@@ -73,7 +73,6 @@ var Gauntlet = (function(gauntlet) {
      */
     gauntlet.GuildHall.Mage = function() {
       this.magical = true;
-      this.chosenSpell = null;
       this.healthBonus += - 10;
       this.intelligenceBonus += 2;
     };
@@ -122,7 +121,7 @@ var Gauntlet = (function(gauntlet) {
     gauntlet.GuildHall.Stealth = function() {
       this.magical = false;
       this.healthBonus += - 5;
-      this.strengthBonus += 30;
+      this.strengthBonus += 3;
     };
     gauntlet.GuildHall.Stealth.prototype = new gauntlet.GuildHall.PlayerClass();
 

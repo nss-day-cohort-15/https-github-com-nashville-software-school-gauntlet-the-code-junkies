@@ -7,6 +7,8 @@ $(document).ready(function() {
   var _className;
   var _weaponName;
   var _playerName;
+  var userSpell;
+  var chosenSpellName;
 
   // EVENT LISTENERS
 
@@ -39,6 +41,11 @@ $(document).ready(function() {
   function getWeaponName (e) {
     _weaponName = e.currentTarget.id
     console.log("weapon Name", _weaponName)
+  }
+
+  function getChosenSpellName () {
+    chosenSpellName = $("#magicSpellSelect option:selected").val();
+    console.log(chosenSpellName)
   }
 
 //Creating User
@@ -116,24 +123,21 @@ $(document).ready(function() {
   }
 
   function userCastSpell () {
-    var Sphere = new Gauntlet.SpellBook.Sphere;
-    var FireBall = new Gauntlet.SpellBook.FireBall;
-    var LightningBolt = new Gauntlet.SpellBook.LightningBolt;
-    var Freeze = new Gauntlet.SpellBook.Freeze;
-    var BoulderToss = new Gauntlet.SpellBook.BoulderToss;
-
-
+    getChosenSpellName();
+    userSpell =  new Gauntlet.SpellBook[chosenSpellName]();
+    user.chosenSpell = userSpell;
 
     user.castSpell(enemy);
     updateStats()
     enemy.attack(user)
     checkHealth()
-    console.log("Enemy Health", enemy.species.health)
+    console.log("Enemy Health", enemy.species.health);
+    console.log(user, enemy);
     updateStats()
   }
 
   function enemyName (enemy){
-      var output = [ "<strong>", enemy.playerName, ": </strong>",
+      var output = [ "<strong>", enemy.playerName.toUpperCase(), ": </strong>",
       "<small>", enemy.species.speciesName, enemy.class,
         (enemy.class.magical) ? "Able to cast " : " Wielding a ",
         enemy.weapon.toString(),

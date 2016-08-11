@@ -349,8 +349,8 @@
               </div>
             </div>
 
-            <div class="card__button">
-              <a class="card__link btn btn--big btn--blue" id="userAttack">
+            <div class="card__button" id="userAttack">
+              <a class="card__link btn btn--big btn--blue">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Attack!</span>
               </a>
@@ -362,13 +362,13 @@
                   <span class="btn__text">Cast a Spell!</span>
                 </a>
               </div>
-              <div>
-                <label>Sphere<input type="radio" name="spellSelect" value="Sphere"></label>
-                <label>Fireball<input type="radio" name="spellSelect" value="Fireball"></label>
-                <label>Lightning Bolt<input type="radio" name="spellSelect" value="LightningBolt"></label>
-                <label>Freeze<input type="radio" name="spellSelect" value="Freeze"></label>
-                <label>Boulder Toss<input type="radio" name="spellSelect" value="BoulderToss"></label>
-              </div>
+              <select id="magicSpellSelect">
+                <option value="Sphere">Sphere</option>
+                <option value="FireBall">Fire Ball</option>
+                <option value="LightningBolt">Lightning Bolt</option>
+                <option value="Freeze">Freeze</option>
+                <option value="BoulderToss">Boulder Toss</option>
+              </select>
             </div>
             <div class="col-sm-4">
               <div class="battle">
