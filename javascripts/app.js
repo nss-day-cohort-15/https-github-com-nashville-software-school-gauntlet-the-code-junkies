@@ -131,11 +131,9 @@ $(document).ready(function() {
     chosenSpecies.strength += chosenClass.strengthBonus
     chosenSpecies.intelligence += chosenClass.intelligenceBonus
     userHealth = chosenSpecies.health
-    console.log("user info", user.toString())
     $("#battlePlayerName").append(`<p> ${user.toString()} </p>`)
     createProgressBar(user, "user")
     printStats(user, "user")
-    console.log("User so far", user)
     return user
     }
 
@@ -178,7 +176,6 @@ $(document).ready(function() {
     enemySpecies.strength += enemyClass.strengthBonus
     enemySpecies.intelligence += enemyClass.intelligenceBonus
     enemyHealth = enemySpecies.health
-    console.log("Random Enemy", enemy)
     createProgressBar(enemy, "enemy")
     enemyName(enemy)
     printStats(enemy, "enemy")
@@ -202,12 +199,11 @@ $(document).ready(function() {
     user.chosenSpell = userSpell;
 
     user.castSpell(enemy);
-    updateStats()
     enemy.attack(user)
+    updateStats()
     checkHealth()
     console.log("Enemy Health", enemy.species.health);
     console.log(user, enemy);
-    updateStats()
   }
 
   function enemyName (enemy){
@@ -221,9 +217,6 @@ $(document).ready(function() {
   }
 
   function createProgressBar (player, name) {
-    console.log("user health", userHealth)
-    console.log("enemy health", enemyHealth)
-    console.log("player health", player.species.health)
     $(`.${name}Progress`).html("")
     var totalHealth = `${name}Health`
     if (name === "user"){
@@ -235,6 +228,7 @@ $(document).ready(function() {
       ${playerHealthPercentage}% Health
       </div>`)
   }
+
   // Print Stats to the DOM
   function printStats (player, name){
     $(`.${name}`).html("")
@@ -267,16 +261,14 @@ $(document).ready(function() {
   }
 
   $('[data-toggle="popover"]').popover()
-  $(".btn--big").on("mouseenter", showPopover)
-  $(".btn--big").on("mouseleave", hidePopover)
+  $(".btn--blue").on("mouseenter", showPopover)
+  $(".btn--blue").on("mouseleave", hidePopover)
 
   function showPopover(e){
-    console.log("event", e)
     $(e.currentTarget).popover('show')
   }
 
   function hidePopover(e){
-    console.log("event", e)
     $(e.currentTarget).popover('hide')
   }
   /*
