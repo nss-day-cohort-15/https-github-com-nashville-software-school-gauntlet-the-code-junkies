@@ -385,7 +385,7 @@ $(document).ready(function() {
         }
         moveAlong = ($("#player-name").val() !== "");
         console.log("switched to class")
-        sortClasses(_speciesName)
+        Gauntlet.sortClasses(_speciesName)
         break;
       case "card--weapon":
         if (_className === null) {
@@ -394,14 +394,14 @@ $(document).ready(function() {
         }
         moveAlong = ($("#player-name").val() !== "");
         console.log("switched to weapons")
-        sortWeapons(_className)
+        Gauntlet.sortWeapons(_className)
         break;
       case "card--battleground":
         // WEAPON NAME error handling is dealt with
         // within createPlayer
         moveAlong = ($("#player-name").val() !== "");
         console.log("switched to battle")
-        sortAttacks(_weaponName)
+        Gauntlet.sortAttacks(_weaponName)
         break;
     }
 
@@ -419,6 +419,7 @@ $(document).ready(function() {
     $(".card").hide();
     $("." + previousCard).show();
   });
+
 
 
 function sortAttacks(weapon) {
@@ -623,6 +624,5 @@ function sortWeapons (classArg) {
   }
 
 }
-
 
 });
