@@ -307,7 +307,7 @@
                 <img src="images/mace.png" class="classImg">
               </a>
             </div>
-            <div class="col-xs-4 card__button wizard-weapon sorcerer-weapon shaman-weapon conjurer-weapon">
+            <div class="col-xs-4 col-xs-offset-4 card__button wizard-weapon sorcerer-weapon shaman-weapon conjurer-weapon">
               <a class="weapon__link btn btn--big btn--blue select" id="Staff">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Staff</span>
@@ -395,6 +395,7 @@
                 </a>
               </div>
               <div>
+              <label for="magicSpellSelect"> Spells: </label>
                 <select id="magicSpellSelect">
                   <option value="Sphere">Sphere</option>
                   <option value="FireBall">Fire Ball</option>
@@ -418,10 +419,16 @@
                   </tbody>
                 </table>
             </div>
-              <div id="playerDefeated">
-
+            <div>
+                 <table id="battleLog" class="table">
+                  <thead>
+                    <th> BATTLE LOG </th>
+                  </thead>
+                  <tbody id="battleOutcome">
+                  </tbody>
+                </table>
               </div>
-          </div>
+            </div>
           <div class="col-xs-4 player">
               <div class="battle">
                   <h2 id="battleEnemyName" class="battleName"></h2>

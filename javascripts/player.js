@@ -32,7 +32,7 @@ var Gauntlet = (function(gauntlet) {
 
     this.toString = function() {
       var output = ["<strong>", this.playerName.toUpperCase(),  "</strong>",
-        ": <small>",
+        ": </br><small>",
         this.species.speciesName,
         " ",
         this.class,
