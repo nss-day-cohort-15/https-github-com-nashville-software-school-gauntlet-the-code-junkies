@@ -586,6 +586,16 @@ function sortWeapons (classArg) {
     $(".shaman-weapon").addClass("hide-selections")
     $(".ninja-weapon").removeClass("hide-selections")
   }
+
+  var clickSword = new Audio("audio/sword-clash.mp3")
+
+  $(".btn, .card__button").on("click", )
+
+  function playClickSword () {
+    console.log("click audio function running")
+    clickSword.play()
+  }
+
 }
 
 
