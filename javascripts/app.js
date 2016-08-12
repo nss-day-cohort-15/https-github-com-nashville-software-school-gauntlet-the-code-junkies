@@ -198,12 +198,12 @@ $(document).ready(function() {
   }
 
   function enemyName (enemy){
-      var output = [ "<strong>", enemy.playerName.toUpperCase(), ": </br></strong>",
-      "<small>", enemy.species.speciesName, enemy.class,
-        (enemy.class.magical) ? "Able to cast " : " Wielding a ",
+      var output = [ "<strong> ", enemy.playerName.toUpperCase(), ": </br></strong> ",
+      " <small> ", enemy.species.speciesName, " ", enemy.class,
+        (enemy.class.magical) ? " Able to cast " : " Wielding a ",
         enemy.weapon.toString(),
         "!</small>"
-      ].join(" ");
+      ].join("");
       $("#battleEnemyName").append(output);
   }
 
