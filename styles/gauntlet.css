@@ -1,0 +1,272 @@
+body {
+  font-family: "Lato", "Helvetica", "sans-serif";
+  margin: 0;
+  padding: 10px;
+  font-size: 3em;
+  background-image: url(../images/backgroundName.jpg);
+  background-repeat: none;
+  background-attachment: fixed;
+  background-position: center;
+  position: relative;
+  float: left;
+  height: 1500px;
+  width: 100%;
+}
+
+.hide-selections {
+  display: none;
+}
+
+.field {
+  margin: 20px 0 0 0;
+}
+
+.field__textinput {
+  font-size: 1em;
+  padding: 15px 0;
+  text-align: center;
+  min-width: 500px;
+}
+
+/*
+  Section styles
+ */
+.card {
+  display: none;
+}
+
+.card__prompt {
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.card__button {
+  font-size: 1.1em;
+  margin: 30px 0 0 0;
+  text-align: center;
+}
+
+
+/*
+  Button styles
+ */
+
+.btn {
+  text-decoration: none;
+  background-color: white;
+  color: #888;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 15px;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 10px 5px;
+  min-width: 250px;
+}
+
+.btn--orange {
+  background: -webkit-linear-gradient(#CE5669, #9D0920);
+  border-color: #9D0920;
+  color: white;
+  background-color: #9D0920;
+}
+
+
+.btn--blue {
+  background: -webkit-linear-gradient(#62A9C7, #3F8DAE);
+  border-color: #3F8DAE;
+  color: white;
+  background-color: #3F8DAE;
+}
+
+.btn--yellow {
+  background: -webkit-linear-gradient(#FFEDA4, #FFDC54);
+  border-color: #FFDC54;
+  color: white;
+  background-color: #FFDC54;
+}
+
+.btn--big {
+  font-size: 28px;
+  padding: 10px;
+  font-weight: 400;
+}
+
+.btn--small {
+  min-width: 50px;
+}
+
+.btn__prompt {
+  background-color: white;
+  color: #fff;
+  padding-right: 12px;
+  padding-left: 12px;
+  margin-right: -10px;
+  font-weight: 600;
+  background-color: #333;
+  opacity: .4;
+  border-radius: 5px 0 0 5px;
+  left: 37px;
+  float: left;
+  vertical-align: middle;
+}
+
+.btn__text {
+  padding: 0 50px 0 20px;
+  border-radius: 0 5px 5px 0;
+  max-width: 90%;
+}
+
+
+/* Battle Field */
+
+.attack {
+  position: relative;
+  background-color: #53A9CE;
+  box-shadow: 2px 2px 2px 5px #aaa;
+  border-radius: 3px;
+}
+
+#attackBtn {
+  position: absolute;
+  display: block;
+  top: 80%;
+  left: 25%;
+  z-index: 10;
+}
+
+.userWins {
+  background-color: rgba(37, 200, 73, 0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 20;
+}
+
+.message{
+  background-color: rgba(255,255,255,0.7);
+  position: relative;
+  display: block;
+  margin: 10% 20%;
+  padding: 5%;
+}
+
+.enemyWins {
+  background-color: rgba(240, 77, 89, 0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 20;
+}
+
+.message{
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 5px;
+  position: relative;
+  display: block;
+  margin: 17% 20%;
+  padding: 5%;
+  text-align: center;
+}
+
+.classImg {
+  display: block;
+  margin: 5px auto;
+  height: 200px;
+  max-width: 100%;
+}
+
+.selectedItem {
+  box-shadow: 2px 2px 2px 5px #aaa;
+  text-decoration: none;
+  background: white;
+  color: #888;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 10px;
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 15px 10px;
+}
+
+.player {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 5%;
+  border-radius: 5px;
+}
+
+.battleName {
+  text-align: center;
+}
+
+#buttonClick {
+  display: none;
+}
+
+#magicSpellSelect {
+  display: block;
+  margin: 10px auto;
+  background-color: white;
+  box-shadow: 1px 1px 1px 3px #aaa;
+  border-radius: 2px;
+}
+
+.battleName small {
+  color: black;
+  font-weight: bold;
+}
+
+#tableWins h4, th {
+  background-color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  padding: 3px;
+}
+
+.endGame {
+  display: inline-block;
+}
+
+.winner {
+  color: #1F9F57;
+}
+
+.loser {
+  color: #9D0920;
+}
+
+#battleLog td {
+  background-color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  font-size: .5em;
+}
+
+
+#gauntletTitle {
+  text-align: center;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 4em;
+  margin: 15px;
+  text-shadow: 3px 3px 3px rgba(93,9,32,0.7);
+}
+
+#restartGame {
+  margin-left: 15%;
+}
+
+.damage {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  color: red;
+  font-size: 3em;
+  z-index: 5;
+  text-shadow: rgba(200, 200, 200, 0.9);
+}
