@@ -24,6 +24,20 @@ $(document).ready(function() {
   $(".doBattle").on("click", createPlayer)
   $(".doBattle").on("click", createEnemy)
 
+  // AUDIO ELEMENTS
+
+  var clickSword = new Audio("../audio/sword-clash.mp3")
+  $(".btn").on("click", playClickSword)
+  function playClickSword () {
+    clickSword.play()
+  }
+
+  var clickAttackAudio = new Audio("../audio/drop-sword.mp3")
+  $(".attack-class").on("click", playAttackAudio)
+  function playAttackAudio () {
+    clickAttackAudio.play()
+  }
+
 
   // RANDOMIZED PLAYER SELECTION OPTIONS
 
@@ -317,7 +331,7 @@ $(document).ready(function() {
   }
 
   function createSelectedItem (e){
-    console.log("event", e)
+    // console.log("event", e)
     $(".btn").removeClass("selectedItem")
     $(e.currentTarget).addClass("selectedItem")
   }
@@ -585,15 +599,6 @@ function sortWeapons (classArg) {
     $(".berserker-weapon").addClass("hide-selections")
     $(".shaman-weapon").addClass("hide-selections")
     $(".ninja-weapon").removeClass("hide-selections")
-  }
-
-  var clickSword = new Audio("audio/sword-clash.mp3")
-
-  $(".btn, .card__button").on("click", )
-
-  function playClickSword () {
-    console.log("click audio function running")
-    clickSword.play()
   }
 
 }
