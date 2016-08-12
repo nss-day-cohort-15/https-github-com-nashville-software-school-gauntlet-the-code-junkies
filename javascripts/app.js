@@ -240,7 +240,7 @@ $(document).ready(function() {
   // Print Stats to the DOM
   function printStats (player, name){
     $(`.${name}`).html("")
-    $(`.${name}`).append(`<h3><strong>HEALTH:</strong> ${player.species.health}<h3>`)
+    $(`.${name}`).append(`<h3> You have <strong>${player.species.health} </strong> health points<h3>`)
   }
 
   function printWinsAndLosses(){
