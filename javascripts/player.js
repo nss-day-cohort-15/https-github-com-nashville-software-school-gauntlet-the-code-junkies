@@ -20,14 +20,13 @@ var Gauntlet = (function(gauntlet) {
     this.attack = function(target) {
       var damage = this.species.strength + this.weapon.damage;
       target.species.health -= damage;
-      console.log(target)
-      return target
+      return damage
     }
 
     this.castSpell = function(target) {
       var damage = (this.species.intelligence * 2) + this.chosenSpell.damage
       target.species.health -= damage;
-      return target
+      return damage
     }
 
     this.toString = function() {

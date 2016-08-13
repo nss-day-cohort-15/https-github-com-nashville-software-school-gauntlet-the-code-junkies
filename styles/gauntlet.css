@@ -260,3 +260,13 @@ body {
 #restartGame {
   margin-left: 15%;
 }
+
+.damage {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  color: red;
+  font-size: 3em;
+  z-index: 5;
+  text-shadow: rgba(200, 200, 200, 0.9);
+}
