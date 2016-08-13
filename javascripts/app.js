@@ -279,7 +279,7 @@ $(document).ready(function() {
   }
 
   function printBattleLog(enemyName){
-    if (user.species.health > enemy.species.health){
+    if (user.species.health > enemy.species.health || user.species.health === enemy.species.health){
       $("#battleOutcome").append(`<tr><td> You defeated: <span class='winner'> ${enemyName} </span></td></tr>`)
     } else {
        $("#battleOutcome").append(`<tr><td> You lost to: <span class='loser'> ${enemyName} </span></td></tr>`)
